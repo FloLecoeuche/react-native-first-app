@@ -6,8 +6,13 @@ import ChooseBank from './components/ChooseBank';
 //import BankTransactions from './components/BankTransactions';
 
 const RouterComponent = () => {
+  const { navBarStyle, titleStyle } = styles;
+
   return (
-    <Router>
+    <Router 
+      navigationBarStyle={navBarStyle}
+      titleStyle={titleStyle}
+    >
       <Scene 
         hideNavBar={true}
         key='welcome'
@@ -16,6 +21,7 @@ const RouterComponent = () => {
       />
       
       <Scene
+        hideNavBar={false}
         onLeft={() => Actions.welcome()}
         key='chooseBank' 
         component={ChooseBank} 
@@ -35,6 +41,20 @@ const RouterComponent = () => {
       />*/}
     </Router>
   );
+};
+
+const styles = {
+  navBarStyle: {
+    backgroundColor: 'transparent',
+    borderBottomWidth: 0
+  },
+  titleStyle: {
+    marginLeft: 25,
+    color: 'white',
+    alignSelf: 'flex-start',
+    justifyContent: 'center',
+    fontWeight: '600'
+  }
 };
 
 export default RouterComponent;

@@ -5,7 +5,11 @@ const Button = ({ onPress, buttonText }) => {
   const { buttonStyle, textStyle } = styles;
 
   return (
-    <TouchableOpacity onPress={onPress} style={buttonStyle} activeOpacity={0.7}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={buttonStyle}
+      activeOpacity={0.9}
+    >
       <Text style={textStyle}>
         {buttonText}
       </Text>
@@ -17,7 +21,7 @@ const styles = {
   textStyle: {
     //fontFamily: 'montserra',
     textAlign: 'center',
-    fontSize: 17,
+    fontSize: 15,
     fontWeight: '700',
     color: 'white',
     paddingTop: 20,

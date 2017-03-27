@@ -6,7 +6,7 @@
   },
   "chooseBank": {
     "navBarText": "Choose bank",
-    "headerText": "Wiche bank does this account belong to?",
+    "headerText": "Which bank does this account belong to?",
     "contentText": "From the list below choose the bank you want to connect your account from.",
     "buttonText": "Continue"
   },

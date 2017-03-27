@@ -12,9 +12,9 @@ const Container = (props) => {
 const styles = {
   containerStyle: {
     flex: 1,
-    marginLeft: 10,
-    marginRight: 10,
-    marginBottom: 15
+    marginLeft: 15,
+    marginRight: 15,
+    marginBottom: 20
   }
 };
 

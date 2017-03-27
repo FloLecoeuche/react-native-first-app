@@ -3,7 +3,8 @@ import { View } from 'react-native';
 import { connect } from 'react-redux';
 //import { Actions } from 'react-native-router-flux';
 import { chooseBankPageUpdate } from '../actions';
-import { Container, Section, Header, Button, ContentText, ImagesGrid } from './common';
+import ImagesGrid from './ImagesGrid';
+import { Container, Section, Header, Button, ContentText } from './common';
 
 class ChooseBank extends Component {
   componentWillMount() {
@@ -20,15 +21,19 @@ class ChooseBank extends Component {
       <View style={viewContainerStyle}>
         <Container>
 
-          {/*<Section style={{ flex: 1 }}>
+          <Section style={{ flex: 0.6, justifyContent: 'center' }}>
             <Header headerText={headerText} />
             <ContentText contentText={contentText} />
-          </Section>*/}
+          </Section>
 
-          <Section>
+          <Section style={{ flex: 1 }}>
             <ImagesGrid 
-              leftImagePath={'../../resources/images/Barclays.png'}
-              rightImagePath={'../../resources/images/LogoNatwest.png'}
+              imageOne={require('../resources/images/Barclays.png')}
+              imageTwo={require('../resources/images/LogoNatwest.png')}
+              imageThree={require('../resources/images/LogoLloyds.png')}
+              imageFour={require('../resources/images/LogoHSBC.png')}
+              imageFive={require('../resources/images/LogoTSB.png')}
+              imageSix={require('../resources/images/LogoSantander.png')}
             />
           </Section>
 
@@ -48,15 +53,6 @@ const styles = {
   viewContainerStyle: {
     backgroundColor: '#304FFE',
     flex: 1
-  },
-  logoStyle: {
-    height: 20,
-    marginBottom: 25,
-    alignSelf: 'center'
-  },
-  buttonStyle: {
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end'
   }
 };
 
