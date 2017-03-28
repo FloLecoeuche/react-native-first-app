@@ -9,7 +9,7 @@ import {
   tsbSelected,
   santanderSelected
 } from '../actions';
-import { BankTouchableImage, FlexSeparator } from './common';
+import { BankTouchableImage } from './common';
 
 class ImagesGrid extends Component {
 
@@ -26,7 +26,7 @@ class ImagesGrid extends Component {
   }
 
   render() {
-    const { viewContainerStyle, viewImageContainer } = styles;
+    const { viewContainerStyle, viewImageContainer, imageStyle } = styles;
     const {
       imageOne,
       imageTwo,
@@ -38,7 +38,43 @@ class ImagesGrid extends Component {
     
     return (
       <View style={viewContainerStyle}>
-        <View style={viewImageContainer}>
+        
+          <BankTouchableImage
+            selectedStyle={this.selected('barclays')}
+            onPress={() => this.props.barclaysSelected()}
+            source={imageOne}
+          />
+
+          <BankTouchableImage
+            selectedStyle={this.selected('natwest')}
+            onPress={() => this.props.natwestSelected()}
+            source={imageTwo}
+          />
+
+          <BankTouchableImage 
+            selectedStyle={this.selected('lloyds')}
+            onPress={() => this.props.lloydsSelected()}
+            source={imageThree}
+          />
+
+          <BankTouchableImage 
+            selectedStyle={this.selected('hsbc')}
+            onPress={() => this.props.hsbcSelected()}
+            source={imageFour}
+          />
+
+          <BankTouchableImage
+            selectedStyle={this.selected('tsb')}
+            onPress={() => this.props.tsbSelected()}
+            source={imageFive}
+          />
+
+          <BankTouchableImage
+            selectedStyle={this.selected('santander')}
+            onPress={() => this.props.santanderSelected()}
+            source={imageSix}
+          />
+        {/*<View style={viewImageContainer}>
           <BankTouchableImage
             selectedStyle={this.selected('barclays')}
             onPress={() => this.props.barclaysSelected()}
@@ -88,7 +124,7 @@ class ImagesGrid extends Component {
             onPress={() => this.props.santanderSelected()}
             source={imageSix}
           />
-        </View>
+        </View>*/}
       </View>
     );
   }
@@ -96,10 +132,12 @@ class ImagesGrid extends Component {
 
 const styles = {
   viewContainerStyle: {
-    flexDirection: 'column',
+    flexDirection: 'row',
     flex: 1,
     marginBottom: 20,
-    marginTop: 20
+    marginTop: 20,
+    flexWrap: 'wrap',
+    justifyContent: 'space-between'
   },
   viewImageContainer: {
     flex: 1,
@@ -108,8 +146,9 @@ const styles = {
     alignItems: 'center'
   },
   imageStyle: {
+    minWidth: 150,
     flex: 1,
-    alignSelf: 'stretch',
+    //alignSelf: 'stretch',
     //justifyContent: 'space-between'
   },
   imageRowStyle: {
