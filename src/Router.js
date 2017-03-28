@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Scene, Actions } from 'react-native-router-flux';
 import Welcome from './components/Welcome';
 import ChooseBank from './components/ChooseBank';
-//import ConnectBank from './components/ConnectBank';
+import ConnectBank from './components/ConnectBank';
 //import BankTransactions from './components/BankTransactions';
 
 const RouterComponent = () => {
@@ -22,19 +22,19 @@ const RouterComponent = () => {
       
       <Scene
         hideNavBar={false}
-        onLeft={() => Actions.welcome()}
         key='chooseBank' 
         component={ChooseBank} 
         title='Choose bank' 
       />
       
-      {/*<Scene
+      <Scene
+        hideNavBar={false}
         key='connectBank'
         component={ConnectBank}
         title='Connect to bank account'
       />
       
-      <Scene
+      {/*<Scene
         key='transactions'
         component={BankTransactions}
         title='Your transactions'
@@ -49,7 +49,8 @@ const styles = {
     borderBottomWidth: 0
   },
   titleStyle: {
-    marginLeft: 25,
+    marginLeft: 55,
+    width: undefined,
     color: 'white',
     alignSelf: 'flex-start',
     justifyContent: 'center',

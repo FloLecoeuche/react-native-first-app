@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-//import { Actions } from 'react-native-router-flux';
+import { Actions } from 'react-native-router-flux';
 import { chooseBankPageUpdate } from '../actions';
 import ImagesGrid from './ImagesGrid';
 import { Container, Section, Header, Button, ContentText } from './common';
@@ -13,8 +13,12 @@ class ChooseBank extends Component {
     }
   }
 
+  onButtonPress() {
+    Actions.connectBank();
+  }
+
   render() {
-    const { viewContainerStyle, buttonStyle } = styles;
+    const { viewContainerStyle } = styles;
     const { navBarText, headerText, contentText, buttonText } = this.props;
 
     return (
@@ -39,7 +43,7 @@ class ChooseBank extends Component {
 
           <Section>
             <Button
-              style={buttonStyle}
+              onPress={this.onButtonPress.bind(this)}
               buttonText={buttonText}
             />
           </Section>
@@ -51,6 +55,7 @@ class ChooseBank extends Component {
 
 const styles = {
   viewContainerStyle: {
+    paddingTop: 40,
     backgroundColor: '#304FFE',
     flex: 1
   }

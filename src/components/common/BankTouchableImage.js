@@ -21,15 +21,18 @@ const BankTouchableImage = (props) => {
 
 const styles = {
   imageContainer: {
-    flex: 0.9,
+    flex: 1,
     backgroundColor: 'white',
     borderWidth: 2,
     borderColor: 'transparent',
     justifyContent: 'space-between',
-    padding: 15
+    paddingRight: 15,
+    paddingLeft: 15,
+    //paddingTop: 25,
+    //paddingBottom: 25
   },
   imageStyle: {
-    flex: 0.9,
+    flex: 1,
     width: undefined,
     alignSelf: 'stretch',
     justifyContent: 'space-between'

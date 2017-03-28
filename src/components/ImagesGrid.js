@@ -9,17 +9,15 @@ import {
   tsbSelected,
   santanderSelected
 } from '../actions';
-import { BankTouchableImage } from './common';
+import { BankTouchableImage, FlexSeparator } from './common';
 
 class ImagesGrid extends Component {
 
   selected(sender) {
-    console.log(sender);
-    console.log(this.props.imageId);
     switch (this.props.imageId) {
       case sender:
         return {
-          borderColor: 'red'
+          borderColor: '#f97056'
         };
     
       default:
@@ -46,6 +44,9 @@ class ImagesGrid extends Component {
             onPress={() => this.props.barclaysSelected()}
             source={imageOne}
           />
+
+          <FlexSeparator flex={0.1} />
+
           <BankTouchableImage
             selectedStyle={this.selected('natwest')}
             onPress={() => this.props.natwestSelected()}
@@ -53,12 +54,17 @@ class ImagesGrid extends Component {
           />
         </View>
 
+        <FlexSeparator flex={0.1} />
+
         <View style={viewImageContainer}>
           <BankTouchableImage 
             selectedStyle={this.selected('lloyds')}
             onPress={() => this.props.lloydsSelected()}
             source={imageThree}
           />
+
+          <FlexSeparator flex={0.1} />
+
           <BankTouchableImage 
             selectedStyle={this.selected('hsbc')}
             onPress={() => this.props.hsbcSelected()}
@@ -66,12 +72,17 @@ class ImagesGrid extends Component {
           />
         </View>
 
+        <FlexSeparator flex={0.1} />
+
         <View style={viewImageContainer}>
           <BankTouchableImage
             selectedStyle={this.selected('tsb')}
             onPress={() => this.props.tsbSelected()}
             source={imageFive}
           />
+
+          <FlexSeparator flex={0.1} />
+
           <BankTouchableImage
             selectedStyle={this.selected('santander')}
             onPress={() => this.props.santanderSelected()}
@@ -93,14 +104,13 @@ const styles = {
   viewImageContainer: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    //justifyContent: 'space-between',
     alignItems: 'center'
   },
   imageStyle: {
-    flex: 0.9,
-    width: undefined,
+    flex: 1,
     alignSelf: 'stretch',
-    justifyContent: 'space-between'
+    //justifyContent: 'space-between'
   },
   imageRowStyle: {
     flex: 1
@@ -109,7 +119,7 @@ const styles = {
 
 const mapStateToProps = (state) => {
   const { imageId } = state.bankImageSelectionReducer;
-  console.log(state.bankImageSelectionReducer);
+  console.log(imageId);
   return { imageId };
 };
 

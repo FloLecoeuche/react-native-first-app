@@ -12,6 +12,12 @@ class Welcome extends Component {
     }
   }
 
+  componentWillReceiveProps() {
+    if (!this.props.headerText) {
+      this.props.welcomePageUpdate();
+    }
+  }
+
   onButtonPress() {
     Actions.chooseBank();
   }
