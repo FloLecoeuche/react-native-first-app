@@ -5,6 +5,9 @@ import ChooseBank from './components/view/ChooseBank';
 import ConnectBank from './components/view/ConnectBank';
 //import BankTransactions from './components/BankTransactions';
 
+// TO DO: Add and push features needed in react-native-router-flux Github
+// Issue : i18n doesn't work corectly when bakcButton is pressed
+
 const RouterComponent = () => { 
   const { navBarStyle, titleStyle } = styles; 
  

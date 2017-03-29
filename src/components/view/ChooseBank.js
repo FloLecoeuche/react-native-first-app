@@ -78,7 +78,8 @@ const styles = {
     flex: 1
   },
   viewContentStyle: {
-    flex: 1
+    flex: 1,
+    justifyContent: 'flex-end'
   },
   headerContainerStyle: {
     flex: 1,
@@ -91,10 +92,10 @@ const styles = {
 
 const portraitStyle = {
   imagesGridStyle: {
-    height: '62%'
+    height: '68%'
   },
   headerContainerStyle: {
-    height: '38%',
+    height: '20%',
     justifyContent: 'center'
   },
   buttonContainerStyle: {
@@ -104,10 +105,10 @@ const portraitStyle = {
 
 const landscapeStyle = {
   imagesGridStyle: {
-    height: '50%'
+    height: '65%'
   },
   headerContainerStyle: {
-    height: '50%',
+    height: '14%',
     justifyContent: 'center'
   },
   buttonContainerStyle: {

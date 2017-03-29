@@ -92,7 +92,7 @@ const styles = {
 
 const portraitStyle = {
   loginFormStyle: {
-    height: '65%',
+    height: '30%',
     borderWidth: 1,
     borderColor: 'red'
   },
