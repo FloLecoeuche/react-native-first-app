@@ -8,8 +8,8 @@ import {
   hsbcSelected,
   tsbSelected,
   santanderSelected
-} from '../actions';
-import { BankTouchableImage } from './common';
+} from '../../actions';
+import { BankTouchableImage } from '../common';
 
 class ImagesGrid extends Component {
   constructor(props) {

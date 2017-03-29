@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { View, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { welcomePageUpdate } from '../actions';
-import { Container, Section, Header, Button, ContentText } from './common';
+import { welcomePageUpdate } from '../../actions';
+import { Container, Section, Header, Button, ContentText } from '../common';
 
 class Welcome extends Component {
   componentWillMount() {
@@ -33,7 +33,7 @@ class Welcome extends Component {
             <Image 
               style={logoStyle}
               resizeMode='contain'
-              source={require('../resources/images/LogoNopa.png')}
+              source={require('../../resources/images/LogoNopa.png')}
             />
           </Section>
 

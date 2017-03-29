@@ -7,8 +7,8 @@ import {
   accountNumberChanged,
   passcodeChanged,
   memorableWordChanged
-} from '../actions';
-import { Input } from './common';
+} from '../../actions';
+import { Input } from '../common';
 
 class LoginForm extends Component {
 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-import { connectBankPageUpdate } from '../actions';
-import { Container, Section, Header, Button, ContentText } from './common';
-import LoginForm from './LoginForm';
+import { connectBankPageUpdate } from '../../actions';
+import { Container, Section, Header, Button, ContentText } from '../common';
+import LoginForm from '../custom/LoginForm';
 
 class ConnectBank extends Component {
   componentWillMount() {

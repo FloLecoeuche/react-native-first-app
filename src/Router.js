@@ -1,8 +1,8 @@
 import React from 'react';
-import { Router, Scene, Actions } from 'react-native-router-flux';
-import Welcome from './components/Welcome';
-import ChooseBank from './components/ChooseBank';
-import ConnectBank from './components/ConnectBank';
+import { Router, Scene } from 'react-native-router-flux';
+import Welcome from './components/view/Welcome';
+import ChooseBank from './components/view/ChooseBank';
+import ConnectBank from './components/view/ConnectBank';
 //import BankTransactions from './components/BankTransactions';
 
 const RouterComponent = () => {
