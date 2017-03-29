@@ -44,7 +44,7 @@ class ChooseBank extends Component {
       >
         <Container>
           <Section style={viewContentStyle}>
-            <Section style={headerContainerStyle}>
+            <Section style={this.state.headerContainerStyle}>
               <Header headerText={headerText} />
               <ContentText contentText={contentText} />
             </Section>
@@ -78,7 +78,8 @@ const styles = {
     flex: 1
   },
   viewContentStyle: {
-    flex: 1
+    flex: 1,
+    justifyContent: 'space-around'
   },
   headerContainerStyle: {
     flex: 1,
@@ -93,6 +94,10 @@ const portraitStyle = {
   imagesGridStyle: {
     height: '62%'
   },
+  headerContainerStyle: {
+    height: '38%',
+    justifyContent: 'center'
+  },
   buttonContainerStyle: {
     height: '7%'
   }
@@ -101,6 +106,10 @@ const portraitStyle = {
 const landscapeStyle = {
   imagesGridStyle: {
     height: '50%'
+  },
+  headerContainerStyle: {
+    height: '50%',
+    justifyContent: 'center'
   },
   buttonContainerStyle: {
     height: '12%'
