@@ -1,7 +1,7 @@
 {
   "welcome": {
-    "headerText": "Welcome to Zopa connect",
-    "contentText": "Keep track of all your expenses by connecting as many bank accounts as you'd like to your Zopa app",
+    "headerText": "Welcome to Nopa connect",
+    "contentText": "Keep track of all your expenses by connecting as many bank accounts as you'd like to your Nopa app",
     "buttonText": "Select your fake bank account"
   },
   "chooseBank": {
@@ -18,8 +18,8 @@
   },
   "bankTransactions": {
     "navBarText": "Your transactions",
-    "headerText": "Welcome to Zopa connect",
-    "contentText": "Keep track of all your expenses by connecting as many bank accounts as you'd like to your Zopa app",
+    "headerText": "Welcome to Nopa connect",
+    "contentText": "Keep track of all your expenses by connecting as many bank accounts as you'd like to your Nopa app",
     "buttonText": "Select your fake bank account"
   }
 }

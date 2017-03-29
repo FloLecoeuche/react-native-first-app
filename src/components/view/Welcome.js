@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { welcomePageUpdate } from '../../actions';
 import { Container, Section, Header, Button, ContentText } from '../common';
 
 class Welcome extends Component {
-  componentWillMount() {
-    if (!this.props.headerText) {
-      this.props.welcomePageUpdate();
-    }
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      logoStyle: {
+        height: '10%'
+      }
+    };
   }
 
-  componentWillReceiveProps() {
+  componentWillMount() {
     if (!this.props.headerText) {
       this.props.welcomePageUpdate();
     }
@@ -22,16 +26,37 @@ class Welcome extends Component {
     Actions.chooseBank();
   }
 
+  orientationChange() {
+    const { height, width } = Dimensions.get('window');
+
+    if (width < height) {
+      this.setState({
+        logoStyle: {
+          height: '10%'
+        }
+      });
+    } else {
+      this.setState({
+        logoStyle: {
+          height: '20%'
+        }
+      });
+    }
+  }
+
   render() {
     const { viewContainerStyle, logoStyle, logoSectionStyle } = styles;
     const { headerText, contentText, buttonText } = this.props;
 
     return (
-      <View style={viewContainerStyle}>
+      <View 
+        onLayout={this.orientationChange.bind(this)}
+        style={viewContainerStyle}
+      >
         <Container>
           <Section style={logoSectionStyle}>
             <Image 
-              style={logoStyle}
+              style={[logoStyle, this.state.logoStyle]}
               resizeMode='contain'
               source={require('../../resources/images/LogoNopa.png')}
             />
@@ -61,11 +86,12 @@ const styles = {
   },
   logoSectionStyle: {
     flex: 0.7,
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
+    borderWidth: 1,
+    borderColor: 'red'
   },
   logoStyle: {
-    height: '10%',
-    marginBottom: 25,
+    marginBottom: 30,
     alignSelf: 'center'
   }
 };

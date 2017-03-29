@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { chooseBankPageUpdate } from '../../actions';
@@ -7,6 +7,16 @@ import ImagesGrid from '../custom/ImagesGrid';
 import { Container, Section, Header, Button, ContentText } from '../common';
 
 class ChooseBank extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      imagesGridStyle: {
+        height: '62%'
+      }
+    };
+  }
+
   componentWillMount() {
     if (!this.props.headerText) {
       this.props.chooseBankPageUpdate();
@@ -17,12 +27,33 @@ class ChooseBank extends Component {
     Actions.connectBank();
   }
 
+  orientationChange() {
+    const { height, width } = Dimensions.get('window');
+
+    if (width < height) {
+      this.setState({
+        imagesGridStyle: {
+          height: '62%'
+        }
+      });
+    } else {
+      this.setState({
+        imagesGridStyle: {
+          height: '50%'
+        }
+      });
+    }
+  }
+
   render() {
     const { viewContainerStyle, headerContainerStyle, imagesGridContainerStyle } = styles;
     const { navBarText, headerText, contentText, buttonText } = this.props;
 
     return (
-      <View style={viewContainerStyle}>
+      <View
+        onLayout={this.orientationChange.bind(this)}
+        style={viewContainerStyle}
+      >
         <Container>
 
           <Section style={headerContainerStyle}>
@@ -30,7 +61,7 @@ class ChooseBank extends Component {
             <ContentText contentText={contentText} />
           </Section>
 
-          <Section style={imagesGridContainerStyle}>
+          <Section style={[imagesGridContainerStyle, this.state.imagesGridStyle]}>
             <ImagesGrid 
               imageOne={require('../../resources/images/Barclays.png')}
               imageTwo={require('../../resources/images/LogoNatwest.png')}
@@ -55,16 +86,14 @@ class ChooseBank extends Component {
 
 const styles = {
   viewContainerStyle: {
-    paddingTop: 40,
     backgroundColor: '#304FFE',
     flex: 1
   },
   headerContainerStyle: {
     flex: 1,
-    justifyContent: 'center'
+    justifyContent: 'flex-end'
   },
   imagesGridContainerStyle: {
-    height: '60%',
     width: '100%'
   }
 };

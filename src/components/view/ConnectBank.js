@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import { connectBankPageUpdate } from '../../actions';
 import { Container, Section, Header, Button, ContentText } from '../common';
 import LoginForm from '../custom/LoginForm';
 
 class ConnectBank extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loginFormStyle: {
+        height: '65%'
+      }
+    };
+  }
+
   componentWillMount() {
     if (!this.props.headerText) {
       this.props.connectBankPageUpdate();
@@ -16,19 +26,40 @@ class ConnectBank extends Component {
 
   }
 
+  orientationChange() {
+    const { height, width } = Dimensions.get('window');
+
+    if (width < height) {
+      this.setState({
+        loginFormStyle: {
+          height: '65%'
+        }
+      });
+    } else {
+      this.setState({
+        loginFormStyle: {
+          height: '45%'
+        }
+      });
+    }
+  }
+
   render() {
-    const { viewContainerStyle } = styles;
+    const { viewContainerStyle, headerContainerStyle, loginFormContainer } = styles;
     const { navBarText, headerText, contentText, buttonText } = this.props;
 
     return (
-      <View style={viewContainerStyle}>
+      <View 
+        onLayout={this.orientationChange.bind(this)}
+        style={viewContainerStyle}
+      >
         <Container>
-          <Section style={{ flex: 0.6, justifyContent: 'center' }}>
+          <Section style={headerContainerStyle}>
             <Header headerText={headerText} />
             <ContentText contentText={contentText} />
           </Section>
 
-          <Section style={{ flex: 1 }} >
+          <Section style={[loginFormContainer, this.state.loginFormStyle]} >
             <LoginForm />
           </Section>
 
@@ -46,9 +77,15 @@ class ConnectBank extends Component {
 
 const styles = {
   viewContainerStyle: {
-    paddingTop: 20,
     backgroundColor: '#304FFE',
     flex: 1
+  },
+  headerContainerStyle: {
+    flex: 1,
+    justifyContent: 'flex-end'
+  },
+  loginFormContainer: {
+    width: '100%'
   }
 };
 

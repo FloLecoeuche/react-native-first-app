@@ -10,10 +10,10 @@ const Input = ({
   placeholderTextColor,
   maxLength
  }) => {
-  const { inputStyle, containerStyle } = styles;
+  const { inputStyle, inputContainerStyle } = styles;
 
   return (
-    <View style={containerStyle}>
+    <View style={inputContainerStyle}>
       <TextInput
         clearButtonMode='while-editing'
         underlineColorAndroid='transparent'
@@ -39,9 +39,9 @@ const styles = {
     fontSize: 17,
     fontWeight: '400',
     //borderWidth: 1,
-    //borderColor: 'red'
+    //borderColor: 'black'
   },
-  containerStyle: {
+  inputContainerStyle: {
     flex: 1,
     flexDirection: 'row',
     minHeight: 35,
