@@ -86,9 +86,7 @@ const styles = {
   },
   logoSectionStyle: {
     flex: 0.7,
-    justifyContent: 'flex-end',
-    borderWidth: 1,
-    borderColor: 'red'
+    justifyContent: 'flex-end'
   },
   logoStyle: {
     marginBottom: 30,
