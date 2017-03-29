@@ -34,7 +34,7 @@ class ChooseBank extends Component {
   }
 
   render() {
-    const { viewContainerStyle, viewContentStyle, headerContainerStyle, imagesGridContainerStyle } = styles;
+    const { viewContainerStyle, viewContentStyle, imagesGridContainerStyle } = styles;
     const { navBarText, headerText, contentText, buttonText } = this.props;
 
     return (
@@ -44,19 +44,19 @@ class ChooseBank extends Component {
       >
         <Container>
           <Section style={viewContentStyle}>
-            <Section style={headerContainerStyle}>
+            <Section style={this.state.headerContainerStyle}>
               <Header headerText={headerText} />
               <ContentText contentText={contentText} />
             </Section>
 
             <Section style={[imagesGridContainerStyle, this.state.imagesGridStyle]}>
               <ImagesGrid 
-                imageOne={require('../../resources/images/Barclays.png')}
-                imageTwo={require('../../resources/images/LogoNatwest.png')}
-                imageThree={require('../../resources/images/LogoLloyds.png')}
-                imageFour={require('../../resources/images/LogoHSBC.png')}
-                imageFive={require('../../resources/images/LogoTSB.png')}
-                imageSix={require('../../resources/images/LogoSantander.png')}
+                imageOne={require('../../resources/images/Bank_Logo/Barclays.png')}
+                imageTwo={require('../../resources/images/Bank_Logo/LogoNatwest.png')}
+                imageThree={require('../../resources/images/Bank_Logo/LogoLloyds.png')}
+                imageFour={require('../../resources/images/Bank_Logo/LogoHSBC.png')}
+                imageFive={require('../../resources/images/Bank_Logo/LogoTSB.png')}
+                imageSix={require('../../resources/images/Bank_Logo/LogoSantander.png')}
               />
             </Section>
           </Section>
@@ -78,7 +78,8 @@ const styles = {
     flex: 1
   },
   viewContentStyle: {
-    flex: 1
+    flex: 1,
+    justifyContent: 'flex-end'
   },
   headerContainerStyle: {
     flex: 1,
@@ -91,7 +92,11 @@ const styles = {
 
 const portraitStyle = {
   imagesGridStyle: {
-    height: '62%'
+    height: '68%'
+  },
+  headerContainerStyle: {
+    height: '20%',
+    justifyContent: 'center'
   },
   buttonContainerStyle: {
     height: '7%'
@@ -100,7 +105,11 @@ const portraitStyle = {
 
 const landscapeStyle = {
   imagesGridStyle: {
-    height: '50%'
+    height: '65%'
+  },
+  headerContainerStyle: {
+    height: '14%',
+    justifyContent: 'center'
   },
   buttonContainerStyle: {
     height: '12%'
