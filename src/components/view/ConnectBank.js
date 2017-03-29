@@ -33,7 +33,7 @@ class ConnectBank extends Component {
   }
 
   render() {
-    const { viewContainerStyle, viewContentStyle, headerContainerStyle, loginFormContainer } = styles;
+    const { viewContainerStyle, viewContentStyle, loginFormContainer } = styles;
     const { navBarText, headerText, contentText, buttonText } = this.props;
 
     return (
@@ -47,7 +47,7 @@ class ConnectBank extends Component {
               style={{ flex: 1 }}
               behavior="padding"
             >
-            <Section style={headerContainerStyle}>
+            <Section style={this.state.headerContainerStyle}>
               <Header headerText={headerText} />
               <ContentText contentText={contentText} />
             </Section>
@@ -92,7 +92,15 @@ const styles = {
 
 const portraitStyle = {
   loginFormStyle: {
-    height: '65%'
+    height: '65%',
+    borderWidth: 1,
+    borderColor: 'red'
+  },
+  headerContainerStyle: {
+    height: '38%',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: 'red'
   },
   buttonContainerStyle: {
     height: '7%'
@@ -101,7 +109,15 @@ const portraitStyle = {
 
 const landscapeStyle = {
   loginFormStyle: {
-    height: '45%'
+    height: '45%',
+    borderWidth: 1,
+    borderColor: 'red'
+  },
+  headerContainerStyle: {
+    height: '38%',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: 'red'
   },
   buttonContainerStyle: {
     height: '12%'
