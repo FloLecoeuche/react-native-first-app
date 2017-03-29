@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Dimensions } from 'react-native';
+import { View, Dimensions, KeyboardAvoidingView } from 'react-native';
 import { connect } from 'react-redux';
 import { connectBankPageUpdate } from '../../actions';
 import { Container, Section, Header, Button, ContentText } from '../common';
@@ -9,11 +9,7 @@ class ConnectBank extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      loginFormStyle: {
-        height: '65%'
-      }
-    };
+    this.state = portraitStyle;
   }
 
   componentWillMount() {
@@ -30,17 +26,9 @@ class ConnectBank extends Component {
     const { height, width } = Dimensions.get('window');
 
     if (width < height) {
-      this.setState({
-        loginFormStyle: {
-          height: '65%'
-        }
-      });
+      this.setState(portraitStyle);
     } else {
-      this.setState({
-        loginFormStyle: {
-          height: '45%'
-        }
-      });
+      this.setState(landscapeStyle);
     }
   }
 
@@ -54,6 +42,10 @@ class ConnectBank extends Component {
         style={viewContainerStyle}
       >
         <Container>
+          <KeyboardAvoidingView 
+            style={{ flex: 1 }}
+            behavior="padding"
+          >
           <Section style={headerContainerStyle}>
             <Header headerText={headerText} />
             <ContentText contentText={contentText} />
@@ -63,12 +55,13 @@ class ConnectBank extends Component {
             <LoginForm />
           </Section>
 
-          <Section>
+          <Section style={this.state.buttonContainerStyle}>
             <Button
               onPress={this.onButtonPress.bind(this)}
               buttonText={buttonText}
             />
           </Section>
+          </KeyboardAvoidingView>
         </Container>
       </View>
     );
@@ -82,10 +75,30 @@ const styles = {
   },
   headerContainerStyle: {
     flex: 1,
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
+    minHeight: '16.5%'
   },
   loginFormContainer: {
-    width: '100%'
+    width: '100%',
+    minHeight: '76.5%'
+  }
+};
+
+const portraitStyle = {
+  loginFormStyle: {
+    height: '65%'
+  },
+  buttonContainerStyle: {
+    height: '7%'
+  }
+};
+
+const landscapeStyle = {
+  loginFormStyle: {
+    height: '45%'
+  },
+  buttonContainerStyle: {
+    height: '12%'
   }
 };
 

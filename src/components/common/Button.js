@@ -23,11 +23,11 @@ const styles = {
     textAlign: 'center',
     fontSize: 15,
     fontWeight: '700',
-    color: 'white',
-    paddingTop: 20,
-    paddingBottom: 20
+    color: 'white'
   },
   buttonStyle: {
+    flex: 1,
+    justifyContent: 'center',
     backgroundColor: '#f97056',
     borderRadius: 2
   }

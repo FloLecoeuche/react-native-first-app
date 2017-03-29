@@ -14,13 +14,7 @@ class LoginForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      imageStyle: {
-        maxWidth: 50,
-        minWidth: '48%',
-        height: '30%'
-      }
-    };
+    this.state = portraitStyle;
   }
 
   onSurnameChange(text) {
@@ -47,19 +41,9 @@ class LoginForm extends Component {
     const { height, width } = Dimensions.get('window');
 
     if (width < height) {
-      this.setState({
-        inputStyle: {
-          height: '20%',
-          minWidth: '100%'
-        }
-      });
+      this.setState(portraitStyle);
     } else {
-      this.setState({
-        inputStyle: {
-          height: '33.3%',
-          minWidth: '45%'
-        }
-      });
+      this.setState(landscapeStyle);
     }
   }
 
@@ -142,6 +126,20 @@ const styles = {
     minWidth: '100%'
   },
   placeholderTextColor: 'rgba(255, 255, 255, 0.8)'
+};
+
+const portraitStyle = {
+  inputStyle: {
+    height: '20%',
+    minWidth: '100%'
+  }
+};
+
+const landscapeStyle = {
+  inputStyle: {
+    height: '33.3%',
+    minWidth: '45%'
+  }
 };
 
 const mapStatetoProps = ({ auth }) => {

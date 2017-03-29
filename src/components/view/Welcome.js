@@ -9,11 +9,7 @@ class Welcome extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      logoStyle: {
-        height: '10%'
-      }
-    };
+    this.state = portraitStyle;
   }
 
   componentWillMount() {
@@ -30,22 +26,14 @@ class Welcome extends Component {
     const { height, width } = Dimensions.get('window');
 
     if (width < height) {
-      this.setState({
-        logoStyle: {
-          height: '10%'
-        }
-      });
+      this.setState(portraitStyle);
     } else {
-      this.setState({
-        logoStyle: {
-          height: '20%'
-        }
-      });
+      this.setState(landscapeStyle);
     }
   }
 
   render() {
-    const { viewContainerStyle, logoStyle, logoSectionStyle } = styles;
+    const { viewContainerStyle, logoStyle, logoSectionStyle, headerContainerStyle } = styles;
     const { headerText, contentText, buttonText } = this.props;
 
     return (
@@ -62,12 +50,12 @@ class Welcome extends Component {
             />
           </Section>
 
-          <Section style={{ flex: 1 }}>
+          <Section style={headerContainerStyle}>
             <Header headerText={headerText} />
             <ContentText contentText={contentText} />
           </Section>
 
-          <Section>
+          <Section style={this.state.buttonContainerStyle}>
             <Button
               onPress={this.onButtonPress.bind(this)}
               buttonText={buttonText}
@@ -91,6 +79,27 @@ const styles = {
   logoStyle: {
     marginBottom: 30,
     alignSelf: 'center'
+  },
+  headerContainerStyle: {
+    flex: 1
+  }
+};
+
+const portraitStyle = {
+  logoStyle: {
+    height: '10%'
+  },
+  buttonContainerStyle: {
+    height: '7%'
+  }
+};
+
+const landscapeStyle = {
+  logoStyle: {
+    height: '20%'
+  },
+  buttonContainerStyle: {
+    height: '12%'
   }
 };
 

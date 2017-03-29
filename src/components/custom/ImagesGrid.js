@@ -15,32 +15,16 @@ class ImagesGrid extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      imageStyle: {
-        maxWidth: 50,
-        minWidth: '48%',
-        height: '30%'
-      }
-    };
+    this.state = portraitStyle;
   }
 
   orientationChange() {
     const { height, width } = Dimensions.get('window');
 
     if (width < height) {
-      this.setState({
-        imageStyle: {
-          minWidth: '48%',
-          height: '33.3%'
-        }
-      });
+      this.setState(portraitStyle);
     } else {
-      this.setState({
-        imageStyle: {
-          minWidth: '32%',
-          height: '50%'
-        }
-      });
+      this.setState(landscapeStyle);
     }
   }
 
@@ -141,6 +125,20 @@ const styles = {
   bankTouchableImageContainerStyle: {
     flex: 1,
     justifyContent: 'flex-end'
+  }
+};
+
+const portraitStyle = {
+  imageStyle: {
+    minWidth: '48%',
+    height: '33.3%'
+  }
+};
+
+const landscapeStyle = {
+  imageStyle: {
+    minWidth: '32%',
+    height: '50%'
   }
 };
 

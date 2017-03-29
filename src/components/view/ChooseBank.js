@@ -10,11 +10,7 @@ class ChooseBank extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      imagesGridStyle: {
-        height: '62%'
-      }
-    };
+    this.state = portraitStyle;
   }
 
   componentWillMount() {
@@ -31,17 +27,9 @@ class ChooseBank extends Component {
     const { height, width } = Dimensions.get('window');
 
     if (width < height) {
-      this.setState({
-        imagesGridStyle: {
-          height: '62%'
-        }
-      });
+      this.setState(portraitStyle);
     } else {
-      this.setState({
-        imagesGridStyle: {
-          height: '50%'
-        }
-      });
+      this.setState(landscapeStyle);
     }
   }
 
@@ -72,7 +60,7 @@ class ChooseBank extends Component {
             />
           </Section>
 
-          <Section>
+          <Section style={this.state.buttonContainerStyle}>
             <Button
               onPress={this.onButtonPress.bind(this)}
               buttonText={buttonText}
@@ -95,6 +83,24 @@ const styles = {
   },
   imagesGridContainerStyle: {
     width: '100%'
+  }
+};
+
+const portraitStyle = {
+  imagesGridStyle: {
+    height: '62%'
+  },
+  buttonContainerStyle: {
+    height: '7%'
+  }
+};
+
+const landscapeStyle = {
+  imagesGridStyle: {
+    height: '50%'
+  },
+  buttonContainerStyle: {
+    height: '12%'
   }
 };
 

@@ -38,16 +38,17 @@ const styles = {
     color: 'white',
     fontSize: 17,
     fontWeight: '400',
-    //borderWidth: 1,
-    //borderColor: 'black'
+    borderWidth: 1,
+    borderColor: 'black'
   },
   inputContainerStyle: {
-    flex: 1,
+    //flex: 1,
     flexDirection: 'row',
-    minHeight: 35,
-    marginBottom: 45,
-    borderBottomWidth: 1,
-    borderBottomColor: '#1d3099'
+    height: '30%',
+    //borderBottomWidth: 1,
+    //borderBottomColor: '#1d3099'
+    borderWidth: 1,
+    borderColor: 'red'
   }
 };
 
