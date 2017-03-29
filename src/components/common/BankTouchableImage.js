@@ -1,25 +1,23 @@
-import React, { Component } from 'react';
-import { Image, TouchableOpacity, Dimensions } from 'react-native';
+import React from 'react';
+import { Image, TouchableOpacity } from 'react-native';
 
-class BankTouchableImage extends Component {
-  render() {
-    const { imageContainer, imageStyle } = styles;
+const BankTouchableImage = (props) => {
+  const { imageContainer, imageStyle } = styles;
 
-    return (
-      <TouchableOpacity 
-        onPress={this.props.onPress} 
-        activeOpacity={0.9} 
-        style={[imageContainer, this.props.selectedStyle/*, this.state.imageStyle*/]}
-      >
-        <Image
-          style={imageStyle}
-          resizeMode='contain'
-          source={this.props.source}
-        />
-      </TouchableOpacity>
-    );
-  }
-}
+  return (
+    <TouchableOpacity 
+      onPress={props.onPress} 
+      activeOpacity={0.9} 
+      style={[imageContainer, props.selectedStyle]}
+    >
+      <Image
+        style={imageStyle}
+        resizeMode='contain'
+        source={props.source}
+      />
+    </TouchableOpacity>
+  );
+}; 
 
 const styles = {
   imageContainer: {
