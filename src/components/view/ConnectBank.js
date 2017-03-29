@@ -42,18 +42,20 @@ class ConnectBank extends Component {
         style={viewContainerStyle}
       >
         <Container>
-          <Section style={viewContentStyle}>
+          {/*<Section style={viewContentStyle}>*/}
             <KeyboardAvoidingView 
               style={{ flex: 1 }}
               behavior="padding"
             >
-            <Section style={this.state.headerContainerStyle}>
-              <Header headerText={headerText} />
-              <ContentText contentText={contentText} />
-            </Section>
+            <Section style={viewContentStyle}>
+              <Section style={this.state.headerContainerStyle}>
+                <Header headerText={headerText} />
+                <ContentText contentText={contentText} />
+              </Section>
 
-            <Section style={[loginFormContainer, this.state.loginFormStyle]} >
-              <LoginForm />
+              <Section style={[loginFormContainer, this.state.loginFormStyle]} >
+                <LoginForm />
+              </Section>
             </Section>
 
             <Section style={this.state.buttonContainerStyle}>
@@ -62,8 +64,7 @@ class ConnectBank extends Component {
                 buttonText={buttonText}
               />
             </Section>
-            </KeyboardAvoidingView>
-          </Section>
+          </KeyboardAvoidingView>
         </Container>
       </View>
     );
@@ -77,7 +78,7 @@ const styles = {
   },
   viewContentStyle: {
     flex: 1,
-    justifyContent: 'space-between'
+    justifyContent: 'flex-end'
   },
   headerContainerStyle: {
     flex: 1,
@@ -86,21 +87,21 @@ const styles = {
   },
   loginFormContainer: {
     width: '100%',
-    minHeight: '76.5%'
+    //minHeight: '76.5%'
   }
 };
 
 const portraitStyle = {
-  loginFormStyle: {
-    height: '30%',
-    borderWidth: 1,
-    borderColor: 'red'
-  },
   headerContainerStyle: {
-    height: '38%',
+    height: '20%',
     justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: 'red'
+    //borderWidth: 1,
+    //borderColor: 'red'
+  },
+  loginFormStyle: {
+    height: '70%',
+    //borderWidth: 1,
+    //borderColor: 'red'
   },
   buttonContainerStyle: {
     height: '7%'
@@ -108,16 +109,16 @@ const portraitStyle = {
 };
 
 const landscapeStyle = {
-  loginFormStyle: {
-    height: '45%',
-    borderWidth: 1,
-    borderColor: 'red'
-  },
   headerContainerStyle: {
-    height: '38%',
+    height: '24%',
     justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: 'red'
+    //borderWidth: 1,
+    //borderColor: 'red'
+  },
+  loginFormStyle: {
+    height: '55%',
+    //borderWidth: 1,
+    //borderColor: 'red'
   },
   buttonContainerStyle: {
     height: '12%'
