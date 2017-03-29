@@ -33,7 +33,7 @@ class Welcome extends Component {
   }
 
   render() {
-    const { viewContainerStyle, logoStyle, logoSectionStyle, headerContainerStyle } = styles;
+    const { viewContainerStyle, viewContentStyle, logoStyle, logoSectionStyle, headerContainerStyle } = styles;
     const { headerText, contentText, buttonText } = this.props;
 
     return (
@@ -42,24 +42,26 @@ class Welcome extends Component {
         style={viewContainerStyle}
       >
         <Container>
-          <Section style={logoSectionStyle}>
-            <Image 
-              style={[logoStyle, this.state.logoStyle]}
-              resizeMode='contain'
-              source={require('../../resources/images/LogoNopa.png')}
-            />
-          </Section>
+          <Section style={viewContentStyle}>
+            <Section style={logoSectionStyle}>
+              <Image 
+                style={[logoStyle, this.state.logoStyle]}
+                resizeMode='contain'
+                source={require('../../resources/images/LogoNopa.png')}
+              />
+            </Section>
 
-          <Section style={headerContainerStyle}>
-            <Header headerText={headerText} />
-            <ContentText contentText={contentText} />
-          </Section>
+            <Section style={headerContainerStyle}>
+              <Header headerText={headerText} />
+              <ContentText contentText={contentText} />
+            </Section>
 
-          <Section style={this.state.buttonContainerStyle}>
-            <Button
-              onPress={this.onButtonPress.bind(this)}
-              buttonText={buttonText}
-            />
+            <Section style={this.state.buttonContainerStyle}>
+              <Button
+                onPress={this.onButtonPress.bind(this)}
+                buttonText={buttonText}
+              />
+            </Section>
           </Section>
         </Container>
       </View>
@@ -70,6 +72,9 @@ class Welcome extends Component {
 const styles = {
   viewContainerStyle: {
     backgroundColor: '#304FFE',
+    flex: 1
+  },
+  viewContentStyle: {
     flex: 1
   },
   logoSectionStyle: {

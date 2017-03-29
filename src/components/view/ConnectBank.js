@@ -33,7 +33,7 @@ class ConnectBank extends Component {
   }
 
   render() {
-    const { viewContainerStyle, headerContainerStyle, loginFormContainer } = styles;
+    const { viewContainerStyle, viewContentStyle, headerContainerStyle, loginFormContainer } = styles;
     const { navBarText, headerText, contentText, buttonText } = this.props;
 
     return (
@@ -42,26 +42,28 @@ class ConnectBank extends Component {
         style={viewContainerStyle}
       >
         <Container>
-          <KeyboardAvoidingView 
-            style={{ flex: 1 }}
-            behavior="padding"
-          >
-          <Section style={headerContainerStyle}>
-            <Header headerText={headerText} />
-            <ContentText contentText={contentText} />
-          </Section>
+          <Section style={viewContentStyle}>
+            <KeyboardAvoidingView 
+              style={{ flex: 1 }}
+              behavior="padding"
+            >
+            <Section style={headerContainerStyle}>
+              <Header headerText={headerText} />
+              <ContentText contentText={contentText} />
+            </Section>
 
-          <Section style={[loginFormContainer, this.state.loginFormStyle]} >
-            <LoginForm />
-          </Section>
+            <Section style={[loginFormContainer, this.state.loginFormStyle]} >
+              <LoginForm />
+            </Section>
 
-          <Section style={this.state.buttonContainerStyle}>
-            <Button
-              onPress={this.onButtonPress.bind(this)}
-              buttonText={buttonText}
-            />
+            <Section style={this.state.buttonContainerStyle}>
+              <Button
+                onPress={this.onButtonPress.bind(this)}
+                buttonText={buttonText}
+              />
+            </Section>
+            </KeyboardAvoidingView>
           </Section>
-          </KeyboardAvoidingView>
         </Container>
       </View>
     );
@@ -72,6 +74,10 @@ const styles = {
   viewContainerStyle: {
     backgroundColor: '#304FFE',
     flex: 1
+  },
+  viewContentStyle: {
+    flex: 1,
+    justifyContent: 'space-between'
   },
   headerContainerStyle: {
     flex: 1,

@@ -34,7 +34,7 @@ class ChooseBank extends Component {
   }
 
   render() {
-    const { viewContainerStyle, headerContainerStyle, imagesGridContainerStyle } = styles;
+    const { viewContainerStyle, viewContentStyle, headerContainerStyle, imagesGridContainerStyle } = styles;
     const { navBarText, headerText, contentText, buttonText } = this.props;
 
     return (
@@ -43,23 +43,23 @@ class ChooseBank extends Component {
         style={viewContainerStyle}
       >
         <Container>
+          <Section style={viewContentStyle}>
+            <Section style={headerContainerStyle}>
+              <Header headerText={headerText} />
+              <ContentText contentText={contentText} />
+            </Section>
 
-          <Section style={headerContainerStyle}>
-            <Header headerText={headerText} />
-            <ContentText contentText={contentText} />
+            <Section style={[imagesGridContainerStyle, this.state.imagesGridStyle]}>
+              <ImagesGrid 
+                imageOne={require('../../resources/images/Barclays.png')}
+                imageTwo={require('../../resources/images/LogoNatwest.png')}
+                imageThree={require('../../resources/images/LogoLloyds.png')}
+                imageFour={require('../../resources/images/LogoHSBC.png')}
+                imageFive={require('../../resources/images/LogoTSB.png')}
+                imageSix={require('../../resources/images/LogoSantander.png')}
+              />
+            </Section>
           </Section>
-
-          <Section style={[imagesGridContainerStyle, this.state.imagesGridStyle]}>
-            <ImagesGrid 
-              imageOne={require('../../resources/images/Barclays.png')}
-              imageTwo={require('../../resources/images/LogoNatwest.png')}
-              imageThree={require('../../resources/images/LogoLloyds.png')}
-              imageFour={require('../../resources/images/LogoHSBC.png')}
-              imageFive={require('../../resources/images/LogoTSB.png')}
-              imageSix={require('../../resources/images/LogoSantander.png')}
-            />
-          </Section>
-
           <Section style={this.state.buttonContainerStyle}>
             <Button
               onPress={this.onButtonPress.bind(this)}
@@ -75,6 +75,9 @@ class ChooseBank extends Component {
 const styles = {
   viewContainerStyle: {
     backgroundColor: '#304FFE',
+    flex: 1
+  },
+  viewContentStyle: {
     flex: 1
   },
   headerContainerStyle: {
