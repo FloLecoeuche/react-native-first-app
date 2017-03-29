@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import {
   barclaysSelected,
@@ -12,6 +12,37 @@ import {
 import { BankTouchableImage } from './common';
 
 class ImagesGrid extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      imageStyle: {
+        maxWidth: 50,
+        minWidth: '48%',
+        height: '30%'
+      }
+    };
+  }
+
+  orientationChange() {
+    const { height, width } = Dimensions.get('window');
+
+    if (width < height) {
+      this.setState({
+        imageStyle: {
+          minWidth: '48%',
+          height: '33.3%'
+        }
+      });
+    } else {
+      this.setState({
+        imageStyle: {
+          minWidth: '32%',
+          height: '50%'
+        }
+      });
+    }
+  }
 
   selected(sender) {
     switch (this.props.imageId) {
@@ -26,7 +57,11 @@ class ImagesGrid extends Component {
   }
 
   render() {
-    const { viewContainerStyle, viewImageContainer, imageStyle } = styles;
+    const { 
+      viewContainerStyle,
+      bankTouchableImageContainerStyle,
+    } = styles;
+    
     const {
       imageOne,
       imageTwo,
@@ -37,52 +72,19 @@ class ImagesGrid extends Component {
     } = this.props;
     
     return (
-      <View style={viewContainerStyle}>
-        
+      <View 
+        onLayout={this.orientationChange.bind(this)}
+        style={viewContainerStyle}
+      >
+        <View style={[bankTouchableImageContainerStyle, this.state.imageStyle]}>
           <BankTouchableImage
             selectedStyle={this.selected('barclays')}
             onPress={() => this.props.barclaysSelected()}
             source={imageOne}
           />
+        </View>
 
-          <BankTouchableImage
-            selectedStyle={this.selected('natwest')}
-            onPress={() => this.props.natwestSelected()}
-            source={imageTwo}
-          />
-
-          <BankTouchableImage 
-            selectedStyle={this.selected('lloyds')}
-            onPress={() => this.props.lloydsSelected()}
-            source={imageThree}
-          />
-
-          <BankTouchableImage 
-            selectedStyle={this.selected('hsbc')}
-            onPress={() => this.props.hsbcSelected()}
-            source={imageFour}
-          />
-
-          <BankTouchableImage
-            selectedStyle={this.selected('tsb')}
-            onPress={() => this.props.tsbSelected()}
-            source={imageFive}
-          />
-
-          <BankTouchableImage
-            selectedStyle={this.selected('santander')}
-            onPress={() => this.props.santanderSelected()}
-            source={imageSix}
-          />
-        {/*<View style={viewImageContainer}>
-          <BankTouchableImage
-            selectedStyle={this.selected('barclays')}
-            onPress={() => this.props.barclaysSelected()}
-            source={imageOne}
-          />
-
-          <FlexSeparator flex={0.1} />
-
+        <View style={[bankTouchableImageContainerStyle, this.state.imageStyle]}>
           <BankTouchableImage
             selectedStyle={this.selected('natwest')}
             onPress={() => this.props.natwestSelected()}
@@ -90,17 +92,15 @@ class ImagesGrid extends Component {
           />
         </View>
 
-        <FlexSeparator flex={0.1} />
-
-        <View style={viewImageContainer}>
+        <View style={[bankTouchableImageContainerStyle, this.state.imageStyle]}>
           <BankTouchableImage 
             selectedStyle={this.selected('lloyds')}
             onPress={() => this.props.lloydsSelected()}
             source={imageThree}
           />
+        </View>
 
-          <FlexSeparator flex={0.1} />
-
+        <View style={[bankTouchableImageContainerStyle, this.state.imageStyle]}>
           <BankTouchableImage 
             selectedStyle={this.selected('hsbc')}
             onPress={() => this.props.hsbcSelected()}
@@ -108,23 +108,21 @@ class ImagesGrid extends Component {
           />
         </View>
 
-        <FlexSeparator flex={0.1} />
-
-        <View style={viewImageContainer}>
+        <View style={[bankTouchableImageContainerStyle, this.state.imageStyle]}>
           <BankTouchableImage
             selectedStyle={this.selected('tsb')}
             onPress={() => this.props.tsbSelected()}
             source={imageFive}
           />
+        </View>
 
-          <FlexSeparator flex={0.1} />
-
+        <View style={[bankTouchableImageContainerStyle, this.state.imageStyle]}>
           <BankTouchableImage
             selectedStyle={this.selected('santander')}
             onPress={() => this.props.santanderSelected()}
             source={imageSix}
           />
-        </View>*/}
+        </View>
       </View>
     );
   }
@@ -137,22 +135,12 @@ const styles = {
     marginBottom: 20,
     marginTop: 20,
     flexWrap: 'wrap',
-    justifyContent: 'space-between'
-  },
-  viewImageContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    //justifyContent: 'space-between',
+    justifyContent: 'space-between',
     alignItems: 'center'
   },
-  imageStyle: {
-    minWidth: 150,
+  bankTouchableImageContainerStyle: {
     flex: 1,
-    //alignSelf: 'stretch',
-    //justifyContent: 'space-between'
-  },
-  imageRowStyle: {
-    flex: 1
+    justifyContent: 'flex-end'
   }
 };
 

@@ -18,19 +18,19 @@ class ChooseBank extends Component {
   }
 
   render() {
-    const { viewContainerStyle } = styles;
+    const { viewContainerStyle, headerContainerStyle, imagesGridContainerStyle } = styles;
     const { navBarText, headerText, contentText, buttonText } = this.props;
 
     return (
       <View style={viewContainerStyle}>
         <Container>
 
-          <Section style={{ flex: 0.6, justifyContent: 'center' }}>
+          <Section style={headerContainerStyle}>
             <Header headerText={headerText} />
             <ContentText contentText={contentText} />
           </Section>
 
-          <Section style={{ flex: 1 }}>
+          <Section style={imagesGridContainerStyle}>
             <ImagesGrid 
               imageOne={require('../resources/images/Barclays.png')}
               imageTwo={require('../resources/images/LogoNatwest.png')}
@@ -58,6 +58,14 @@ const styles = {
     paddingTop: 40,
     backgroundColor: '#304FFE',
     flex: 1
+  },
+  headerContainerStyle: {
+    flex: 1,
+    justifyContent: 'center'
+  },
+  imagesGridContainerStyle: {
+    height: '60%',
+    width: '100%'
   }
 };
 

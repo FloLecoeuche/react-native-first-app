@@ -64,7 +64,7 @@ const styles = {
     justifyContent: 'flex-end'
   },
   logoStyle: {
-    height: 20,
+    height: '10%',
     marginBottom: 25,
     alignSelf: 'center'
   }
