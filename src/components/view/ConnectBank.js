@@ -61,8 +61,6 @@ class ConnectBank extends Component {
     const { height, width } = Dimensions.get('window');
     const containerHeight = this.getContainerHeight();
 
-    Keyboard.dismiss();
-
     if (width < height) {
       this.setState(portraitStyle);
       this.setState({ scrollViewContainerStyle: { height: containerHeight * 0.63 } });
