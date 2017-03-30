@@ -11,7 +11,7 @@ class ConnectBank extends Component {
 
     var _keyboardWillShowSubscription;
     var _keyboardWillHideSubscription;
-    this.state = { portraitStyle, scrollViewContainerStyle: { height: '70%' } };
+    this.state = { portraitStyle, scrollViewContainerStyle: { height: '70%' }, keyboardAvoidingViewStyle: { flex: 1, height: '100%' } };
   }
 
   componentWillMount() {
@@ -43,6 +43,8 @@ class ConnectBank extends Component {
     const { height, width } = Dimensions.get('window');
     const containerHeight = this.getContainerHeight();
 
+    Keyboard.dismiss();
+
     if (width < height) {
       this.setState(portraitStyle);
       this.setState({ scrollViewContainerStyle: { height: containerHeight * 0.63 } });
@@ -58,6 +60,7 @@ class ConnectBank extends Component {
 	}
 	_keyboardWillHide(e) {
 		console.log('Keyboard will hide');
+    this.setState({ keyboardAvoidingViewStyle: { flex: 1, height: '100%' } });
     //this.setState({height: height});
 	}
 
@@ -75,9 +78,10 @@ class ConnectBank extends Component {
         >
           <View style={{ flex: 1 }}>
             <Container>
-              <KeyboardAvoidingView 
-                style={{ flex: 1 }}
-                behavior='padding'
+              <KeyboardAvoidingView
+                keyboardVerticalOffset={0}
+                style={[{ flex: 1, borderWidth: 1, borderColor: 'red' }, this.state.keyboardAvoidingViewStyle]}
+                behavior='height'
               >
               <Section style={viewContentStyle}>
                 <Section style={this.state.headerContainerStyle}>
@@ -110,7 +114,7 @@ class ConnectBank extends Component {
 const styles = {
   viewContainerStyle: {
     backgroundColor: '#304FFE',
-    flex: 1
+    flex: 1,
   },
   scrollViewContainerStyle: {
     height: '70%'
