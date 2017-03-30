@@ -48,14 +48,14 @@ class LoginForm extends Component {
   }
 
   render() {
-    const { viewContainer, inputContainer, placeholderTextColor } = styles;
+    const { viewContainer, placeholderTextColor } = styles;
 
     return (
       <View 
         onLayout={this.orientationChange.bind(this)}
         style={viewContainer}
       >
-        <View style={[inputContainer, this.state.inputStyle]}>
+        <View style={this.state.inputStyle}>
           <Input
             placeholder='Surname'
             placeholderTextColor={placeholderTextColor}
@@ -65,7 +65,7 @@ class LoginForm extends Component {
           />
         </View>
 
-        <View style={[inputContainer, this.state.inputStyle]}>
+        <View style={this.state.inputStyle}>
           <Input
             placeholder='Sort code'
             keyboardType='number-pad'
@@ -76,7 +76,7 @@ class LoginForm extends Component {
           />
         </View>
 
-        <View style={[inputContainer, this.state.inputStyle]}>
+        <View style={this.state.inputStyle}>
           <Input
             placeholder='Account number'
             keyboardType='number-pad'
@@ -87,7 +87,7 @@ class LoginForm extends Component {
           />
         </View>
 
-        <View style={[inputContainer, this.state.inputStyle]}>
+        <View style={this.state.inputStyle}>
           <Input
             placeholder='Passcode'
             placeholderTextColor={placeholderTextColor}
@@ -97,7 +97,7 @@ class LoginForm extends Component {
           />
         </View>
 
-        <View style={[inputContainer, this.state.inputStyle]}>
+        <View style={this.state.inputStyle}>
           <Input
             placeholder='Memorable word'
             placeholderTextColor={placeholderTextColor}
@@ -115,15 +115,8 @@ const styles = {
   viewContainer: {
     flexDirection: 'row',
     flex: 1,
-    marginBottom: 20,
-    marginTop: 20,
     flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    alignItems: 'center'
-  },
-  inputContainer: {
-    height: '20%',
-    minWidth: '100%'
+    justifyContent: 'space-between'
   },
   placeholderTextColor: 'rgba(255, 255, 255, 0.8)'
 };

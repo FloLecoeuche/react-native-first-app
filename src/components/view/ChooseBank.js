@@ -60,6 +60,7 @@ class ChooseBank extends Component {
               />
             </Section>
           </Section>
+          
           <Section style={this.state.buttonContainerStyle}>
             <Button
               onPress={this.onButtonPress.bind(this)}
