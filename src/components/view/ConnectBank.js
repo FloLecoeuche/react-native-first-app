@@ -61,7 +61,7 @@ class ConnectBank extends Component {
     const { height, width } = Dimensions.get('window');
     const containerHeight = this.getContainerHeight();
 
-    //Keyboard.dismiss();
+    Keyboard.dismiss();
 
     if (width < height) {
       this.setState(portraitStyle);
@@ -96,14 +96,15 @@ class ConnectBank extends Component {
         >
           <View style={{ flex: 1 }}>
             <Container>
-              {/*<KeyboardAvoidingView
+              <KeyboardAvoidingView
                 style={[{ flex: 1, borderWidth: 1, borderColor: 'red' }, this.state.keyboardAvoidingViewStyle]}
                 behavior='padding'
-              >*/}
+              >
               
-              {/*<KeyboardAwareView
+              <KeyboardAwareView
                 style={{ flex: 1 }}
-              >*/}
+                styleDuringKeyboardShow={{ marginBottom: 0 }}
+              >
 
               <Section style={viewContentStyle}>
                 <Section style={this.state.headerContainerStyle}>
@@ -125,9 +126,9 @@ class ConnectBank extends Component {
                 />
               </Section>
 
-              {/*</KeyboardAwareView>*/}
+              </KeyboardAwareView>
 
-            {/*</KeyboardAvoidingView>*/}
+            </KeyboardAvoidingView>
             </Container>
           </View>
         </TouchableWithoutFeedback>
