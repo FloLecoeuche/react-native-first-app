@@ -144,7 +144,7 @@ const landscapeStyle = {
 
 const mapStateToProps = (state) => {
   const { imageId } = state.bankImageSelectionReducer;
-  console.log(imageId);
+  
   return { imageId };
 };
 

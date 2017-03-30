@@ -116,7 +116,7 @@ const styles = {
     flexDirection: 'row',
     flex: 1,
     flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    justifyContent: 'space-between'
   },
   placeholderTextColor: 'rgba(255, 255, 255, 0.8)'
 };

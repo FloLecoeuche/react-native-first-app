@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Dimensions, KeyboardAvoidingView } from 'react-native';
+import { View, Dimensions, Keyboard, KeyboardAvoidingView, ScrollView, TouchableWithoutFeedback } from 'react-native';
 import { connect } from 'react-redux';
 import { connectBankPageUpdate } from '../../actions';
 import { Container, Section, Header, Button, ContentText } from '../common';
@@ -9,7 +9,9 @@ class ConnectBank extends Component {
   constructor(props) {
     super(props);
 
-    this.state = portraitStyle;
+    var _keyboardWillShowSubscription;
+    var _keyboardWillHideSubscription;
+    this.state = { portraitStyle, scrollViewContainerStyle: { height: '70%' } };
   }
 
   componentWillMount() {
@@ -18,22 +20,49 @@ class ConnectBank extends Component {
     }
   }
 
-  onButtonPress() {
+  componentDidMount() {
+		this._keyboardWillShowSubscription = Keyboard.addListener('keyboardDidShow', (e) => this._keyboardWillShow(e));
+		this._keyboardWillHideSubscription = Keyboard.addListener('keyboardDidHide', (e) => this._keyboardWillHide(e));
+	}
+	componentWillUnmount() {
+		this._keyboardWillShowSubscription.remove();
+		this._keyboardWillHideSubscription.remove();
+	}
 
+  onButtonPress() {
+    console.log('Button pressed');
+  }
+
+  getContainerHeight() {
+    const containerHeight = Dimensions.get('window').height - 20;
+
+    return containerHeight;
   }
 
   orientationChange() {
     const { height, width } = Dimensions.get('window');
+    const containerHeight = this.getContainerHeight();
 
     if (width < height) {
       this.setState(portraitStyle);
+      this.setState({ scrollViewContainerStyle: { height: containerHeight * 0.63 } });
     } else {
       this.setState(landscapeStyle);
+      this.setState({ scrollViewContainerStyle: { height: containerHeight * 0.46 } });
     }
   }
 
+	_keyboardWillShow(e) {
+    console.log('Keyboard will show');
+		//this.setState({height: height - e.endCoordinates.height});
+	}
+	_keyboardWillHide(e) {
+		console.log('Keyboard will hide');
+    //this.setState({height: height});
+	}
+
   render() {
-    const { viewContainerStyle, viewContentStyle, loginFormContainer } = styles;
+    const { viewContainerStyle, scrollViewContainerStyle, viewContentStyle, loginFormContainer } = styles;
     const { navBarText, headerText, contentText, buttonText } = this.props;
 
     return (
@@ -41,31 +70,38 @@ class ConnectBank extends Component {
         onLayout={this.orientationChange.bind(this)}
         style={viewContainerStyle}
       >
-        <Container>
-          {/*<Section style={viewContentStyle}>*/}
-            <KeyboardAvoidingView 
-              style={{ flex: 1 }}
-              behavior="padding"
-            >
-            <Section style={viewContentStyle}>
-              <Section style={this.state.headerContainerStyle}>
-                <Header headerText={headerText} />
-                <ContentText contentText={contentText} />
+        <TouchableWithoutFeedback
+          onPress={() => Keyboard.dismiss()}
+        >
+          <View style={{ flex: 1 }}>
+            <Container>
+              <KeyboardAvoidingView 
+                style={{ flex: 1 }}
+                behavior='padding'
+              >
+              <Section style={viewContentStyle}>
+                <Section style={this.state.headerContainerStyle}>
+                  <Header headerText={headerText} />
+                  <ContentText contentText={contentText} />
+                </Section>
+
+                <Section style={[loginFormContainer, this.state.loginFormStyle]} >
+                  <ScrollView contentContainerStyle={[scrollViewContainerStyle, this.state.scrollViewContainerStyle]}>
+                    <LoginForm />
+                  </ScrollView>
+                </Section>
               </Section>
 
-              <Section style={[loginFormContainer, this.state.loginFormStyle]} >
-                <LoginForm />
+              <Section style={this.state.buttonContainerStyle}>
+                <Button
+                  onPress={this.onButtonPress.bind(this)}
+                  buttonText={buttonText}
+                />
               </Section>
-            </Section>
-
-            <Section style={this.state.buttonContainerStyle}>
-              <Button
-                onPress={this.onButtonPress.bind(this)}
-                buttonText={buttonText}
-              />
-            </Section>
-          </KeyboardAvoidingView>
-        </Container>
+            </KeyboardAvoidingView>
+            </Container>
+          </View>
+        </TouchableWithoutFeedback>
       </View>
     );
   }
@@ -75,6 +111,9 @@ const styles = {
   viewContainerStyle: {
     backgroundColor: '#304FFE',
     flex: 1
+  },
+  scrollViewContainerStyle: {
+    height: '70%'
   },
   viewContentStyle: {
     flex: 1,
@@ -86,22 +125,17 @@ const styles = {
     minHeight: '16.5%'
   },
   loginFormContainer: {
-    width: '100%',
-    //minHeight: '76.5%'
+    width: '100%'
   }
 };
 
 const portraitStyle = {
   headerContainerStyle: {
     height: '20%',
-    justifyContent: 'center',
-    //borderWidth: 1,
-    //borderColor: 'red'
+    justifyContent: 'center'
   },
   loginFormStyle: {
-    height: '70%',
-    //borderWidth: 1,
-    //borderColor: 'red'
+    height: '70%'
   },
   buttonContainerStyle: {
     height: '7%'
@@ -110,15 +144,11 @@ const portraitStyle = {
 
 const landscapeStyle = {
   headerContainerStyle: {
-    height: '24%',
-    justifyContent: 'center',
-    //borderWidth: 1,
-    //borderColor: 'red'
+    minHeight: '24%',
+    justifyContent: 'center'
   },
   loginFormStyle: {
-    height: '55%',
-    //borderWidth: 1,
-    //borderColor: 'red'
+    height: '55%'
   },
   buttonContainerStyle: {
     height: '12%'
