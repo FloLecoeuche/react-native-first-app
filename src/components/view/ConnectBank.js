@@ -1,9 +1,27 @@
 import React, { Component } from 'react';
-import { View, Dimensions, Keyboard, KeyboardAvoidingView, ScrollView, TouchableWithoutFeedback } from 'react-native';
+import { 
+  View, 
+  Dimensions, 
+  Keyboard, 
+  KeyboardAvoidingView, 
+  ScrollView, 
+  TouchableWithoutFeedback 
+} from 'react-native';
 import { connect } from 'react-redux';
 import { connectBankPageUpdate } from '../../actions';
-import { Container, Section, Header, Button, ContentText } from '../common';
+import { 
+  Container, 
+  Section, 
+  Header, 
+  Button, 
+  ContentText 
+} from '../common';
 import LoginForm from '../custom/LoginForm';
+import * as HOC from '../HOC';
+
+
+const KeyboardAwareView = HOC.KeyboardAwareHOC(View);
+
 
 class ConnectBank extends Component {
   constructor(props) {
@@ -79,10 +97,15 @@ class ConnectBank extends Component {
           <View style={{ flex: 1 }}>
             <Container>
               <KeyboardAvoidingView
-                keyboardVerticalOffset={0}
                 style={[{ flex: 1, borderWidth: 1, borderColor: 'red' }, this.state.keyboardAvoidingViewStyle]}
-                behavior='height'
+                behavior='padding'
               >
+              
+              <KeyboardAwareView
+                style={{ flex: 1 }}
+                styleDuringKeyboardShow={{ marginBottom: 0 }}
+              >
+
               <Section style={viewContentStyle}>
                 <Section style={this.state.headerContainerStyle}>
                   <Header headerText={headerText} />
@@ -102,6 +125,9 @@ class ConnectBank extends Component {
                   buttonText={buttonText}
                 />
               </Section>
+
+              </KeyboardAwareView>
+
             </KeyboardAvoidingView>
             </Container>
           </View>

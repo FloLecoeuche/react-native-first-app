@@ -5,6 +5,7 @@ import { Actions } from 'react-native-router-flux';
 import { chooseBankPageUpdate } from '../../actions';
 import ImagesGrid from '../custom/ImagesGrid';
 import { Container, Section, Header, Button, ContentText } from '../common';
+import * as images from '../../resources/images/Bank_Logo';
 
 class ChooseBank extends Component {
   constructor(props) {
@@ -51,12 +52,12 @@ class ChooseBank extends Component {
 
             <Section style={[imagesGridContainerStyle, this.state.imagesGridStyle]}>
               <ImagesGrid 
-                imageOne={require('../../resources/images/Bank_Logo/Barclays.png')}
-                imageTwo={require('../../resources/images/Bank_Logo/LogoNatwest.png')}
-                imageThree={require('../../resources/images/Bank_Logo/LogoLloyds.png')}
-                imageFour={require('../../resources/images/Bank_Logo/LogoHSBC.png')}
-                imageFive={require('../../resources/images/Bank_Logo/LogoTSB.png')}
-                imageSix={require('../../resources/images/Bank_Logo/LogoSantander.png')}
+                imageOne={images.Barclays}
+                imageTwo={images.Natwest}
+                imageThree={images.Lloyds}
+                imageFour={images.HSBC}
+                imageFive={images.TSB}
+                imageSix={images.Santander}
               />
             </Section>
           </Section>
