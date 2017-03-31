@@ -11,14 +11,11 @@ const Container = (props) => {
 
 const styles = {
   containerStyle: {
-    //flex: 1,
-    alignSelf: 'center',
-    width: '92%',
-    height: '97%',
-    //marginLeft: 15,
-    //marginRight: 15,
-    //marginBottom: 20,
-    borderWidth: 1,
+    flex: 1,
+    marginLeft: 15,
+    marginRight: 15,
+    marginBottom: 20,
+    borderWidth: 2,
     borderColor: 'yellow'
   }
 };

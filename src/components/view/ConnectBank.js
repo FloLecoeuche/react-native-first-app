@@ -1,9 +1,23 @@
 import React, { Component } from 'react';
-import { View, Dimensions, Keyboard, KeyboardAvoidingView, ScrollView, TouchableWithoutFeedback } from 'react-native';
+import { 
+  View, 
+  Dimensions, 
+  Keyboard, 
+  KeyboardAvoidingView, 
+  ScrollView, 
+  TouchableWithoutFeedback 
+} from 'react-native';
 import { connect } from 'react-redux';
 import { connectBankPageUpdate } from '../../actions';
-import { Container, Section, Header, Button, ContentText } from '../common';
+import { 
+  Container, 
+  Section, 
+  Header, 
+  Button, 
+  ContentText 
+} from '../common';
 import LoginForm from '../custom/LoginForm';
+
 
 class ConnectBank extends Component {
   constructor(props) {
@@ -33,29 +47,21 @@ class ConnectBank extends Component {
     console.log('Button pressed');
   }
 
-  getContainerHeight() {
-    const containerHeight = Dimensions.get('window').height - 20;
-
-    return containerHeight;
-  }
-
   orientationChange() {
     const { height, width } = Dimensions.get('window');
-    const containerHeight = this.getContainerHeight();
-
-    Keyboard.dismiss();
 
     if (width < height) {
       this.setState(portraitStyle);
-      this.setState({ scrollViewContainerStyle: { height: containerHeight * 0.63 } });
+      this.setState({ scrollViewContainerStyle: { height: height * 0.63 } });
     } else {
       this.setState(landscapeStyle);
-      this.setState({ scrollViewContainerStyle: { height: containerHeight * 0.46 } });
+      this.setState({ scrollViewContainerStyle: { height: height * 0.46 } });
     }
   }
 
 	_keyboardWillShow(e) {
     console.log('Keyboard will show');
+    this.setState({ keyboardAvoidingViewStyle: { padding: 0 } });
 		//this.setState({height: height - e.endCoordinates.height});
 	}
 	_keyboardWillHide(e) {
@@ -78,11 +84,10 @@ class ConnectBank extends Component {
         >
           <View style={{ flex: 1 }}>
             <Container>
-              <KeyboardAvoidingView
-                keyboardVerticalOffset={0}
+              {/*<KeyboardAvoidingView
                 style={[{ flex: 1, borderWidth: 1, borderColor: 'red' }, this.state.keyboardAvoidingViewStyle]}
-                behavior='height'
-              >
+                behavior='padding'
+              >*/}
               <Section style={viewContentStyle}>
                 <Section style={this.state.headerContainerStyle}>
                   <Header headerText={headerText} />
@@ -102,7 +107,7 @@ class ConnectBank extends Component {
                   buttonText={buttonText}
                 />
               </Section>
-            </KeyboardAvoidingView>
+            {/*</KeyboardAvoidingView>*/}
             </Container>
           </View>
         </TouchableWithoutFeedback>
