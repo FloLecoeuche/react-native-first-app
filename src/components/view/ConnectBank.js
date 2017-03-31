@@ -17,10 +17,6 @@ import {
   ContentText 
 } from '../common';
 import LoginForm from '../custom/LoginForm';
-import * as HOC from '../HOC';
-
-
-const KeyboardAwareView = HOC.KeyboardAwareHOC(View);
 
 
 class ConnectBank extends Component {
@@ -51,27 +47,21 @@ class ConnectBank extends Component {
     console.log('Button pressed');
   }
 
-  getContainerHeight() {
-    const containerHeight = Dimensions.get('window').height - 20;
-
-    return containerHeight;
-  }
-
   orientationChange() {
     const { height, width } = Dimensions.get('window');
-    const containerHeight = this.getContainerHeight();
 
     if (width < height) {
       this.setState(portraitStyle);
-      this.setState({ scrollViewContainerStyle: { height: containerHeight * 0.63 } });
+      this.setState({ scrollViewContainerStyle: { height: height * 0.63 } });
     } else {
       this.setState(landscapeStyle);
-      this.setState({ scrollViewContainerStyle: { height: containerHeight * 0.46 } });
+      this.setState({ scrollViewContainerStyle: { height: height * 0.46 } });
     }
   }
 
 	_keyboardWillShow(e) {
     console.log('Keyboard will show');
+    this.setState({ keyboardAvoidingViewStyle: { padding: 0 } });
 		//this.setState({height: height - e.endCoordinates.height});
 	}
 	_keyboardWillHide(e) {
@@ -94,16 +84,10 @@ class ConnectBank extends Component {
         >
           <View style={{ flex: 1 }}>
             <Container>
-              <KeyboardAvoidingView
+              {/*<KeyboardAvoidingView
                 style={[{ flex: 1, borderWidth: 1, borderColor: 'red' }, this.state.keyboardAvoidingViewStyle]}
                 behavior='padding'
-              >
-              
-              <KeyboardAwareView
-                style={{ flex: 1 }}
-                styleDuringKeyboardShow={{ marginBottom: 0 }}
-              >
-
+              >*/}
               <Section style={viewContentStyle}>
                 <Section style={this.state.headerContainerStyle}>
                   <Header headerText={headerText} />
@@ -123,10 +107,7 @@ class ConnectBank extends Component {
                   buttonText={buttonText}
                 />
               </Section>
-
-              </KeyboardAwareView>
-
-            </KeyboardAvoidingView>
+            {/*</KeyboardAvoidingView>*/}
             </Container>
           </View>
         </TouchableWithoutFeedback>
