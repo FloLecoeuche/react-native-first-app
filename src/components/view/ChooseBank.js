@@ -118,8 +118,8 @@ const landscapeStyle = {
   }
 };
 
-const mapStateToProps = (state) => {
-  const { navBarText, headerText, contentText, buttonText } = state.stringsReducer.chooseBank;
+const mapStateToProps = ({ stringsReducer }) => {
+  const { navBarText, headerText, contentText, buttonText } = stringsReducer.chooseBank;
 
   return { navBarText, headerText, contentText, buttonText };
 };

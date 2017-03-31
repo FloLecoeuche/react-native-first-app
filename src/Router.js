@@ -3,7 +3,7 @@ import { Router, Scene } from 'react-native-router-flux';
 import Welcome from './components/view/Welcome';
 import ChooseBank from './components/view/ChooseBank';
 import ConnectBank from './components/view/ConnectBank';
-//import BankTransactions from './components/BankTransactions';
+import BankTransactions from './components/view/BankTransactions';
 
 // TO DO: Add and push features needed in react-native-router-flux Github
 // Issue : i18n doesn't work corectly when bakcButton is pressed
@@ -19,8 +19,7 @@ const RouterComponent = () => {
       <Scene  
         hideNavBar={true} 
         key='welcome' 
-        component={Welcome} 
-        initial 
+        component={Welcome}  
       /> 
        
       <Scene 
@@ -37,11 +36,11 @@ const RouterComponent = () => {
         title='Connect to bank account' 
       /> 
        
-      {/*<Scene 
-        key='transactions' 
+      <Scene 
+        key='bankTransactions' 
         component={BankTransactions} 
         title='Your transactions' 
-      />*/} 
+      /> 
     </Router> 
   ); 
 }; 

@@ -5,4 +5,6 @@ export * from './Button';
 export * from './Container';
 export * from './Section';
 export * from './BankTouchableImage';
-export * from './FlexSeparator';
+export * from './Spinner';
+export * from './SectionListView';
+export * from './Row';

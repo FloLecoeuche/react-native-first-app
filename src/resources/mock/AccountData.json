@@ -1,0 +1,62 @@
+[
+  { 
+    "date": "01/02/2016",
+    "creditor": "PAYPAL. ZARA",
+    "amount": "-£35.98"
+  },
+  { 
+    "date": "01/02/2016",
+    "creditor": "HOUSE OF FRASER",
+    "amount": "-£35.98"
+  },
+  { 
+    "date": "01/02/2016",
+    "creditor": "TESCO",
+    "amount": "-£35.98"
+  },
+  { 
+    "date": "03/02/2016",
+    "creditor": "PAYPAL. ZARA",
+    "amount": "-£35.98"
+  },
+  { 
+    "date": "03/02/2016",
+    "creditor": "HOUSE OF FRASER",
+    "amount": "-£35.98"
+  },
+  { 
+    "date": "05/02/2016",
+    "creditor": "PAYPAL. ZARA",
+    "amount": "-£35.98"
+  },
+  { 
+    "date": "05/02/2016",
+    "creditor": "ULTRA",
+    "amount": "-£35.98"
+  },
+  { 
+    "date": "05/02/2016",
+    "creditor": "TESCO",
+    "amount": "-£35.98"
+  },
+  { 
+    "date": "05/02/2016",
+    "creditor": "FINSBURY",
+    "amount": "-£35.98"
+  },
+  { 
+    "date": "05/02/2016",
+    "creditor": "BK",
+    "amount": "-£35.98"
+  },
+  { 
+    "date": "05/02/2016",
+    "creditor": "FITNESS PARK",
+    "amount": "-£35.98"
+  },
+  { 
+    "date": "05/02/2016",
+    "creditor": "BMW",
+    "amount": "-£35.98"
+  }
+]

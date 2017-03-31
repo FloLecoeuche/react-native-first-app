@@ -108,8 +108,8 @@ const landscapeStyle = {
   }
 };
 
-const mapStateToProps = (state) => {
-  const { headerText, contentText, buttonText } = state.stringsReducer.welcome;
+const mapStateToProps = ({ stringsReducer }) => {
+  const { headerText, contentText, buttonText } = stringsReducer.welcome;
 
   return { headerText, contentText, buttonText };
 };
