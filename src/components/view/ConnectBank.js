@@ -84,10 +84,10 @@ class ConnectBank extends Component {
         >
           <View style={{ flex: 1 }}>
             <Container>
-              {/*<KeyboardAvoidingView
+              <KeyboardAvoidingView
                 style={[{ flex: 1, borderWidth: 1, borderColor: 'red' }, this.state.keyboardAvoidingViewStyle]}
                 behavior='padding'
-              >*/}
+              >
               <Section style={viewContentStyle}>
                 <Section style={this.state.headerContainerStyle}>
                   <Header headerText={headerText} />
@@ -107,7 +107,7 @@ class ConnectBank extends Component {
                   buttonText={buttonText}
                 />
               </Section>
-            {/*</KeyboardAvoidingView>*/}
+            </KeyboardAvoidingView>
             </Container>
           </View>
         </TouchableWithoutFeedback>
