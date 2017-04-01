@@ -82,7 +82,8 @@ class BankTransaction extends Component {
       textUserInfoStyle,
       accountInfoBlockStyle,
       accountInfoRightBlockStyle,
-      textHelpStyle
+      textHelpStyle,
+      listViewStyle
     } = styles;
     const { headerText, contentText, buttonText } = this.props;
 
@@ -129,6 +130,7 @@ class BankTransaction extends Component {
 
         <Section style={listViewSectionStyle}>
           <ListView
+            style={listViewStyle}
             dataSource={this.state.dataSource}
             renderRow={this.renderRow}
             renderSectionHeader={this.renderSectionHeader}
@@ -186,6 +188,9 @@ const styles = {
     flex: 0.7,
     //borderWidth: 2,
     //borderColor: 'black'
+  },
+  listViewStyle: {
+    backgroundColor: 'white'
   }
 };
 

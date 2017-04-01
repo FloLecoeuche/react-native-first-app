@@ -14,9 +14,7 @@ const styles = {
     flex: 1,
     marginLeft: 15,
     marginRight: 15,
-    marginBottom: 20,
-    borderWidth: 2,
-    borderColor: 'yellow'
+    marginBottom: 20
   }
 };
 
