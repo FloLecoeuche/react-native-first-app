@@ -92,7 +92,7 @@ class BankTransaction extends Component {
         onLayout={this.orientationChange.bind(this)}
         style={viewContainerStyle}
       >
-        <Section style={headerSectionStyle}>
+        <Section style={[headerSectionStyle, this.state.headerSectionStyle]}>
           <View style={headerContainerStyle}>
             <View style={accountInformationsContainerStyle}>
 
@@ -147,7 +147,7 @@ const styles = {
     flex: 1
   },
   headerSectionStyle: {
-    flex: 0.25,
+    flex: 0.20,
     padding: 15,
     justifyContent: 'flex-end',
     //borderWidth: 2,
@@ -167,9 +167,8 @@ const styles = {
     alignItems: 'flex-end'
   },
   textUserInfoStyle: {
-    //fontFamily: 'Roboto',
+    fontFamily: 'Roboto-Bold',
     fontSize: 14,
-    fontWeight: '700',
     color: 'white'
   },
   textHelpContainerStyle: {
@@ -179,9 +178,8 @@ const styles = {
     //borderColor: 'black'
   },
   textHelpStyle: {
-    //fontFamily: 'Roboto',
+    fontFamily: 'Roboto-Bold',
     fontSize: 12,
-    fontWeight: '700',
     color: 'white'
   },
   listViewSectionStyle: {
@@ -200,6 +198,9 @@ const portraitStyle = {
   },
   buttonContainerStyle: {
     height: '7%'
+  },
+  headerSectionStyle: {
+    flex: 0.20,
   }
 };
 
@@ -209,6 +210,9 @@ const landscapeStyle = {
   },
   buttonContainerStyle: {
     height: '12%'
+  },
+  headerSectionStyle: {
+    flex: 0.30,
   }
 };
 

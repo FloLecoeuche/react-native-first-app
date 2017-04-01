@@ -52,8 +52,8 @@ const styles = {
   inputStyle: {
     flex: 1,
     color: 'white',
-    fontSize: 17,
-    fontWeight: '400'
+    fontFamily: 'Roboto-Regular',
+    fontSize: 17
   }
 };
 

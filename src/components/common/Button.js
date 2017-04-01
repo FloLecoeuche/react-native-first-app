@@ -19,10 +19,9 @@ const Button = ({ onPress, buttonText }) => {
 
 const styles = {
   textStyle: {
-    //fontFamily: 'montserra',
     textAlign: 'center',
+    fontFamily: 'Montserrat-Bold',
     fontSize: 15,
-    fontWeight: '700',
     color: 'white'
   },
   buttonStyle: {
