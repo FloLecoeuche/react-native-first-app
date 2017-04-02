@@ -123,14 +123,14 @@ const styles = {
 
 const portraitStyle = {
   inputStyle: {
-    height: '20%',
+    height: '19%',
     minWidth: '100%'
   }
 };
 
 const landscapeStyle = {
   inputStyle: {
-    height: '33.3%',
+    height: '30%',
     minWidth: '45%'
   }
 };

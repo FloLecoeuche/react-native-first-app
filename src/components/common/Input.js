@@ -53,7 +53,8 @@ const styles = {
     flex: 1,
     color: 'white',
     fontFamily: 'Roboto-Regular',
-    fontSize: 17
+    fontSize: 17,
+    padding: 0
   }
 };
 
