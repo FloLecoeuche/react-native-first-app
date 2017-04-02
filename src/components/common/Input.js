@@ -44,7 +44,7 @@ const styles = {
   },
   borderBottomStyle: {
     flex: 1,
-    height: '35%',
+    height: '44%',
     minHeight: 30,
     borderBottomWidth: 1,
     borderBottomColor: '#1d3099'
