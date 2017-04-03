@@ -1,6 +1,7 @@
 {
   "name": "nopa",
   "version": "0.0.1",
+  "author": "Florian Lecoeuche",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
@@ -23,5 +24,6 @@
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "license": "AGPLv3"
 }
