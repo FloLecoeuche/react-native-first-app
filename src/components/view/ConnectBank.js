@@ -27,8 +27,6 @@ class ConnectBank extends Component {
   constructor(props) {
     super(props);
 
-    var _keyboardWillShowSubscription;
-    var _keyboardWillHideSubscription;
     this.state = { portraitStyle, scrollViewContainerStyle: { height: '70%' } };
   }
 
@@ -37,15 +35,6 @@ class ConnectBank extends Component {
       this.props.connectBankPageUpdate();
     }*/
   }
-
-  componentDidMount() {
-		this._keyboardWillShowSubscription = Keyboard.addListener('keyboardDidShow', (e) => this._keyboardWillShow(e));
-		this._keyboardWillHideSubscription = Keyboard.addListener('keyboardDidHide', (e) => this._keyboardWillHide(e));
-	}
-	componentWillUnmount() {
-		this._keyboardWillShowSubscription.remove();
-		this._keyboardWillHideSubscription.remove();
-	}
 
   onButtonPress(surname, sortCode, accountNumber, passcode, memorableWord) {
     this.props.loginUser({ 
@@ -68,15 +57,6 @@ class ConnectBank extends Component {
       this.setState({ scrollViewContainerStyle: { height: height * 0.46 } });
     }
   }
-
-	_keyboardWillShow(event) {
-    console.log('Keyboard will show');
-    //this.setState({ keyboardAvoidingViewStyle: { padding: 0 } });
-	}
-	_keyboardWillHide(event) {
-		console.log('Keyboard will hide');
-    //this.setState({ keyboardAvoidingViewStyle: { flex: 1, height: '100%' } });
-	}
 
   renderButton() {
       if (this.props.loading) {
