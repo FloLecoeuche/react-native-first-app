@@ -54,13 +54,10 @@ export const memorableWordChanged = (text) => {
 export const loginUser = ({ surname, sortCode, accountNumber, passcode, memorableWord }) => {
     return (dispatch) => {
         dispatch({ type: LOGIN_USER });
-        console.log(surname);
-        console.log(sortCode);
-        console.log(accountNumber);
-        console.log(passcode);
-        console.log(memorableWord);
-        // Authentication API call
+
+        // Authentication API call mock
         setTimeout(() => loginUserSuccess(dispatch, {}), 2000);
+        //error => catch(() => loginUserFail(dispatch));
     };
 };
 

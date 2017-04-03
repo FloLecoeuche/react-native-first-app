@@ -33,9 +33,9 @@ class ConnectBank extends Component {
   }
 
   componentWillMount() {
-    if (!this.props.headerText) {
+    /*if (!this.props.headerText) {
       this.props.connectBankPageUpdate();
-    }
+    }*/
   }
 
   componentDidMount() {
@@ -48,12 +48,6 @@ class ConnectBank extends Component {
 	}
 
   onButtonPress(surname, sortCode, accountNumber, passcode, memorableWord) {
-    console.log('Button pressed');
-
-    console.log(this.state);
-
-    console.log(surname);
-
     this.props.loginUser({ 
       surname, 
       sortCode, 
@@ -92,14 +86,14 @@ class ConnectBank extends Component {
       return (
           <Button
             onPress={this.onButtonPress.bind(this)}
-            buttonText={this.props.buttonText}
+            buttonText={"Continue"}
           />
       );
   }
 
   render() {
     const { viewContainerStyle, scrollViewContainerStyle, viewContentStyle, loginFormContainer } = styles;
-    const { navBarText, headerText, contentText, buttonText } = this.props;
+    //const { navBarText, headerText, contentText, buttonText } = this.props;
 
     return (
       <View 
@@ -112,13 +106,17 @@ class ConnectBank extends Component {
           <View style={{ flex: 1 }}>
             <Container>
               <KeyboardAvoidingView
-                style={[{ flex: 1, borderWidth: 1, borderColor: 'red' }, this.state.keyboardAvoidingViewStyle]}
+                style={[{ flex: 1/*, borderWidth: 1, borderColor: 'red'*/ }, this.state.keyboardAvoidingViewStyle]}
                 behavior='padding'
               >
               <Section style={viewContentStyle}>
                 <Section style={this.state.headerContainerStyle}>
-                  <Header headerText={headerText} />
-                  <ContentText contentText={contentText} />
+                  <Header 
+                    headerText={"Log in to your online banking"}
+                  />
+                  <ContentText
+                    contentText={"Enter the same details you use to login to your online banking"}
+                  />
                 </Section>
 
                 <Section style={[loginFormContainer, this.state.loginFormStyle]} >

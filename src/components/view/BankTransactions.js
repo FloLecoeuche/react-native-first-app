@@ -41,16 +41,15 @@ class BankTransaction extends Component {
   }
 
   convertAccountDataArrayToMap() {
-    var accountDataByDate = {}; // Create the blank map
+    var accountDataByDate = {};
+    
     accountData.forEach(accountDataItem => {
       if (!accountDataByDate[accountDataItem.date]) {
-        // Create an entry in the map for the category if it hasn't yet been created
         accountDataByDate[accountDataItem.date] = [];
       }
       accountDataByDate[accountDataItem.date].push(accountDataItem);
     });
 
-    console.log(accountDataByDate);
     return accountDataByDate;
   }
 
@@ -149,9 +148,7 @@ const styles = {
   headerSectionStyle: {
     flex: 0.20,
     padding: 15,
-    justifyContent: 'flex-end',
-    //borderWidth: 2,
-    //borderColor: 'red'
+    justifyContent: 'flex-end'
   },
   headerContainerStyle: {
     height: '65%'
@@ -159,9 +156,7 @@ const styles = {
   accountInformationsContainerStyle: {
     flex: 0.7,
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    //borderWidth: 2,
-    //borderColor: 'black'
+    justifyContent: 'space-between'
   },
   accountInfoRightBlockStyle: {
     alignItems: 'flex-end'
@@ -173,9 +168,7 @@ const styles = {
   },
   textHelpContainerStyle: {
     flex: 0.3,
-    justifyContent: 'flex-end',
-    //borderWidth: 2,
-    //borderColor: 'black'
+    justifyContent: 'flex-end'
   },
   textHelpStyle: {
     fontFamily: 'Roboto-Bold',
@@ -183,9 +176,7 @@ const styles = {
     color: 'white'
   },
   listViewSectionStyle: {
-    flex: 0.7,
-    //borderWidth: 2,
-    //borderColor: 'black'
+    flex: 0.7
   },
   listViewStyle: {
     backgroundColor: 'white'

@@ -15,9 +15,9 @@ class ChooseBank extends Component {
   }
 
   componentWillMount() {
-    if (!this.props.headerText) {
+    /*if (!this.props.headerText) {
       this.props.chooseBankPageUpdate();
-    }
+    }*/
   }
 
   onButtonPress() {
@@ -36,7 +36,7 @@ class ChooseBank extends Component {
 
   render() {
     const { viewContainerStyle, viewContentStyle, imagesGridContainerStyle } = styles;
-    const { navBarText, headerText, contentText, buttonText } = this.props;
+    //const { navBarText, headerText, contentText, buttonText } = this.props;
 
     return (
       <View
@@ -46,8 +46,12 @@ class ChooseBank extends Component {
         <Container>
           <Section style={viewContentStyle}>
             <Section style={this.state.headerContainerStyle}>
-              <Header headerText={headerText} />
-              <ContentText contentText={contentText} />
+              <Header
+                headerText={"Which bank does this account belong to?"}
+              />
+              <ContentText
+                contentText={"From the list below choose the bank you want to connect your account from."}
+              />
             </Section>
 
             <Section style={[imagesGridContainerStyle, this.state.imagesGridStyle]}>
@@ -65,7 +69,7 @@ class ChooseBank extends Component {
           <Section style={this.state.buttonContainerStyle}>
             <Button
               onPress={this.onButtonPress.bind(this)}
-              buttonText={buttonText}
+              buttonText={"Continue"}
             />
           </Section>
         </Container>
