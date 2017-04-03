@@ -1,69 +1,79 @@
 import React, { Component } from 'react';
-import { View, Dimensions, Keyboard, KeyboardAvoidingView, ScrollView, TouchableWithoutFeedback } from 'react-native';
+import { 
+  View, 
+  Dimensions, 
+  Keyboard, 
+  KeyboardAvoidingView, 
+  ScrollView, 
+  TouchableWithoutFeedback 
+} from 'react-native';
 import { connect } from 'react-redux';
-import { connectBankPageUpdate } from '../../actions';
-import { Container, Section, Header, Button, ContentText } from '../common';
+import { 
+  connectBankPageUpdate,
+  loginUser
+} from '../../actions';
+import { 
+  Container, 
+  Section, 
+  Header, 
+  Button, 
+  ContentText,
+  Spinner
+} from '../common';
 import LoginForm from '../custom/LoginForm';
+
 
 class ConnectBank extends Component {
   constructor(props) {
     super(props);
 
-    var _keyboardWillShowSubscription;
-    var _keyboardWillHideSubscription;
     this.state = { portraitStyle, scrollViewContainerStyle: { height: '70%' } };
   }
 
   componentWillMount() {
-    if (!this.props.headerText) {
+    /*if (!this.props.headerText) {
       this.props.connectBankPageUpdate();
-    }
+    }*/
   }
 
-  componentDidMount() {
-		this._keyboardWillShowSubscription = Keyboard.addListener('keyboardDidShow', (e) => this._keyboardWillShow(e));
-		this._keyboardWillHideSubscription = Keyboard.addListener('keyboardDidHide', (e) => this._keyboardWillHide(e));
-	}
-	componentWillUnmount() {
-		this._keyboardWillShowSubscription.remove();
-		this._keyboardWillHideSubscription.remove();
-	}
-
-  onButtonPress() {
-    console.log('Button pressed');
-  }
-
-  getContainerHeight() {
-    const containerHeight = Dimensions.get('window').height - 20;
-
-    return containerHeight;
+  onButtonPress(surname, sortCode, accountNumber, passcode, memorableWord) {
+    this.props.loginUser({ 
+      surname, 
+      sortCode, 
+      accountNumber, 
+      passcode, 
+      memorableWord 
+    });
   }
 
   orientationChange() {
     const { height, width } = Dimensions.get('window');
-    const containerHeight = this.getContainerHeight();
 
     if (width < height) {
       this.setState(portraitStyle);
-      this.setState({ scrollViewContainerStyle: { height: containerHeight * 0.63 } });
+      this.setState({ scrollViewContainerStyle: { height: height * 0.63 } });
     } else {
       this.setState(landscapeStyle);
-      this.setState({ scrollViewContainerStyle: { height: containerHeight * 0.46 } });
+      this.setState({ scrollViewContainerStyle: { height: height * 0.46 } });
     }
   }
 
-	_keyboardWillShow(e) {
-    console.log('Keyboard will show');
-		//this.setState({height: height - e.endCoordinates.height});
-	}
-	_keyboardWillHide(e) {
-		console.log('Keyboard will hide');
-    //this.setState({height: height});
-	}
+  renderButton() {
+      if (this.props.loading) {
+          return <Spinner size='large' />;
+      }
+
+      return (
+          <Button
+            onPress={this.onButtonPress.bind(this)}
+            buttonText={"Continue"}
+          />
+      );
+  }
 
   render() {
     const { viewContainerStyle, scrollViewContainerStyle, viewContentStyle, loginFormContainer } = styles;
-    const { navBarText, headerText, contentText, buttonText } = this.props;
+    //const { navBarText, headerText, contentText, buttonText } = this.props;
 
     return (
       <View 
@@ -75,14 +85,18 @@ class ConnectBank extends Component {
         >
           <View style={{ flex: 1 }}>
             <Container>
-              <KeyboardAvoidingView 
-                style={{ flex: 1 }}
+              <KeyboardAvoidingView
+                style={[{ flex: 1/*, borderWidth: 1, borderColor: 'red'*/ }, this.state.keyboardAvoidingViewStyle]}
                 behavior='padding'
               >
               <Section style={viewContentStyle}>
                 <Section style={this.state.headerContainerStyle}>
-                  <Header headerText={headerText} />
-                  <ContentText contentText={contentText} />
+                  <Header 
+                    headerText={"Log in to your online banking"}
+                  />
+                  <ContentText
+                    contentText={"Enter the same details you use to login to your online banking"}
+                  />
                 </Section>
 
                 <Section style={[loginFormContainer, this.state.loginFormStyle]} >
@@ -93,10 +107,11 @@ class ConnectBank extends Component {
               </Section>
 
               <Section style={this.state.buttonContainerStyle}>
-                <Button
+                {/*<Button
                   onPress={this.onButtonPress.bind(this)}
                   buttonText={buttonText}
-                />
+                />*/}
+                {this.renderButton()}
               </Section>
             </KeyboardAvoidingView>
             </Container>
@@ -110,7 +125,7 @@ class ConnectBank extends Component {
 const styles = {
   viewContainerStyle: {
     backgroundColor: '#304FFE',
-    flex: 1
+    flex: 1,
   },
   scrollViewContainerStyle: {
     height: '70%'
@@ -155,10 +170,11 @@ const landscapeStyle = {
   }
 };
 
-const mapStateToProps = (state) => {
-  const { navBarText, headerText, contentText, buttonText } = state.stringsReducer.connectBank;
+const mapStateToProps = ({ stringsReducer, auth }) => {
+  const { navBarText, headerText, contentText, buttonText } = stringsReducer.connectBank;
+  const { loading } = auth;
 
-  return { navBarText, headerText, contentText, buttonText };
+  return { navBarText, headerText, contentText, buttonText, loading };
 };
 
-export default connect(mapStateToProps, { connectBankPageUpdate })(ConnectBank);
+export default connect(mapStateToProps, { connectBankPageUpdate, loginUser })(ConnectBank);

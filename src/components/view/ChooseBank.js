@@ -5,6 +5,7 @@ import { Actions } from 'react-native-router-flux';
 import { chooseBankPageUpdate } from '../../actions';
 import ImagesGrid from '../custom/ImagesGrid';
 import { Container, Section, Header, Button, ContentText } from '../common';
+import * as images from '../../resources/images/Bank_Logo';
 
 class ChooseBank extends Component {
   constructor(props) {
@@ -14,9 +15,9 @@ class ChooseBank extends Component {
   }
 
   componentWillMount() {
-    if (!this.props.headerText) {
+    /*if (!this.props.headerText) {
       this.props.chooseBankPageUpdate();
-    }
+    }*/
   }
 
   onButtonPress() {
@@ -35,7 +36,7 @@ class ChooseBank extends Component {
 
   render() {
     const { viewContainerStyle, viewContentStyle, imagesGridContainerStyle } = styles;
-    const { navBarText, headerText, contentText, buttonText } = this.props;
+    //const { navBarText, headerText, contentText, buttonText } = this.props;
 
     return (
       <View
@@ -45,18 +46,22 @@ class ChooseBank extends Component {
         <Container>
           <Section style={viewContentStyle}>
             <Section style={this.state.headerContainerStyle}>
-              <Header headerText={headerText} />
-              <ContentText contentText={contentText} />
+              <Header
+                headerText={"Which bank does this account belong to?"}
+              />
+              <ContentText
+                contentText={"From the list below choose the bank you want to connect your account from."}
+              />
             </Section>
 
             <Section style={[imagesGridContainerStyle, this.state.imagesGridStyle]}>
               <ImagesGrid 
-                imageOne={require('../../resources/images/Bank_Logo/Barclays.png')}
-                imageTwo={require('../../resources/images/Bank_Logo/LogoNatwest.png')}
-                imageThree={require('../../resources/images/Bank_Logo/LogoLloyds.png')}
-                imageFour={require('../../resources/images/Bank_Logo/LogoHSBC.png')}
-                imageFive={require('../../resources/images/Bank_Logo/LogoTSB.png')}
-                imageSix={require('../../resources/images/Bank_Logo/LogoSantander.png')}
+                imageOne={images.Barclays}
+                imageTwo={images.Natwest}
+                imageThree={images.Lloyds}
+                imageFour={images.HSBC}
+                imageFive={images.TSB}
+                imageSix={images.Santander}
               />
             </Section>
           </Section>
@@ -64,7 +69,7 @@ class ChooseBank extends Component {
           <Section style={this.state.buttonContainerStyle}>
             <Button
               onPress={this.onButtonPress.bind(this)}
-              buttonText={buttonText}
+              buttonText={"Continue"}
             />
           </Section>
         </Container>
@@ -117,8 +122,8 @@ const landscapeStyle = {
   }
 };
 
-const mapStateToProps = (state) => {
-  const { navBarText, headerText, contentText, buttonText } = state.stringsReducer.chooseBank;
+const mapStateToProps = ({ stringsReducer }) => {
+  const { navBarText, headerText, contentText, buttonText } = stringsReducer.chooseBank;
 
   return { navBarText, headerText, contentText, buttonText };
 };

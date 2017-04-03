@@ -13,9 +13,8 @@ const ContentText = ({ contentText }) => {
 
 const styles = {
   textStyle: {
-    //fontFamily: 'Roboto',
+    fontFamily: 'Roboto-Bold',
     fontSize: 14,
-    fontWeight: '700',
     color: 'white',
     textAlign: 'center',
     paddingRight: 20,

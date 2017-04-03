@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import { View, Image, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+
 import { welcomePageUpdate } from '../../actions';
 import { Container, Section, Header, Button, ContentText } from '../common';
+
+import nopaLogo from '../../resources/images/LogoNopa.png';
 
 class Welcome extends Component {
   constructor(props) {
@@ -13,9 +16,9 @@ class Welcome extends Component {
   }
 
   componentWillMount() {
-    if (!this.props.headerText) {
+    /*if (!this.props.headerText) {
       this.props.welcomePageUpdate();
-    }
+    }*/
   }
 
   onButtonPress() {
@@ -34,10 +37,10 @@ class Welcome extends Component {
 
   render() {
     const { viewContainerStyle, viewContentStyle, logoStyle, logoSectionStyle, headerContainerStyle } = styles;
-    const { headerText, contentText, buttonText } = this.props;
+    //const { headerText, contentText, buttonText } = this.props;
 
     return (
-      <View 
+      <View
         onLayout={this.orientationChange.bind(this)}
         style={viewContainerStyle}
       >
@@ -47,19 +50,23 @@ class Welcome extends Component {
               <Image 
                 style={[logoStyle, this.state.logoStyle]}
                 resizeMode='contain'
-                source={require('../../resources/images/LogoNopa.png')}
+                source={nopaLogo}
               />
             </Section>
 
             <Section style={headerContainerStyle}>
-              <Header headerText={headerText} />
-              <ContentText contentText={contentText} />
+              <Header 
+                headerText={"Welcome to Nopa connect"} 
+              />
+              <ContentText 
+                contentText={"Keep track of all your expenses by connecting as many bank accounts as you'd like to your Nopa app"}
+              />
             </Section>
 
             <Section style={this.state.buttonContainerStyle}>
               <Button
                 onPress={this.onButtonPress.bind(this)}
-                buttonText={buttonText}
+                buttonText={"Select your fake bank account"}
               />
             </Section>
           </Section>
@@ -108,8 +115,8 @@ const landscapeStyle = {
   }
 };
 
-const mapStateToProps = (state) => {
-  const { headerText, contentText, buttonText } = state.stringsReducer.welcome;
+const mapStateToProps = ({ stringsReducer }) => {
+  const { headerText, contentText, buttonText } = stringsReducer.welcome;
 
   return { headerText, contentText, buttonText };
 };

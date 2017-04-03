@@ -15,3 +15,6 @@ export const SORT_CODE_CHANGED = 'sort_code_changed';
 export const ACCOUNT_NUMBER_CHANGED = 'account_number_changed';
 export const PASSCODE_CHANGED = 'passcode_changed';
 export const MEMORABLE_WORD_CHANGED = 'memorable_word_changed';
+export const LOGIN_USER = 'login_user';
+export const LOGIN_USER_SUCCESS = 'login_user_success';
+export const LOGIN_USER_FAIL = 'login_user_fail';

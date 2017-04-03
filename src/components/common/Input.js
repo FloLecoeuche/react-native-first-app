@@ -44,15 +44,17 @@ const styles = {
   },
   borderBottomStyle: {
     flex: 1,
-    height: 30,
+    height: '44%',
+    minHeight: 30,
     borderBottomWidth: 1,
     borderBottomColor: '#1d3099'
   },
   inputStyle: {
     flex: 1,
     color: 'white',
+    fontFamily: 'Roboto-Regular',
     fontSize: 17,
-    fontWeight: '400'
+    padding: 0
   }
 };
 
