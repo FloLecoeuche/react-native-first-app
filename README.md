@@ -20,6 +20,7 @@
 - [ ] Disable copy/paste on the connection form
 - [ ] Add test with Jest (https://facebook.github.io/jest/)
 - [ ] Make the underline become white (or orange like 'Continue' button) on selected input
+- [ ] Display date in the ListView like Today - 2 April 2017 - 30 March 2017 ...
 
 
 ## LICENSE
